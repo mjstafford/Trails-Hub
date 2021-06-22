@@ -5,7 +5,7 @@ const path = require("path");
 
 module.exports = {
   entry: {
-    path: "../client/main.js",
+    path: "./client/main.js",
   },
   output: {
     path: path.join(__dirname, "../../../target/classes/static"),
