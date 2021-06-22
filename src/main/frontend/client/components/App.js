@@ -8,6 +8,7 @@ import "../assets/scss/main.scss"
 import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 
 import NavBar from './NavBar';
+import TrailShow from './TrailShow';
 
 const App = (props) => {
   useEffect(() => {
@@ -17,11 +18,18 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <NavBar />
-      <Switch>
-        <Route exact path="/">
-          <Redirect to="/trails" />
-        </Route>
-      </Switch>
+      <div className="grid-x grid-margin-x">
+        <div class="cell auto"></div>
+          <div className="cell small-12 medium-8">
+            <Switch>
+              <Route exact path="/">
+                <Redirect to="/trails" />
+              </Route>
+              <Route exact path="/trails/:id" component={TrailShow} />
+            </Switch>
+          </div>
+        <div class="cell auto"></div>
+      </div>
     </BrowserRouter>
   );
 };
