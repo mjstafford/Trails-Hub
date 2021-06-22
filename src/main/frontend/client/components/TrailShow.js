@@ -31,16 +31,6 @@ const TrailShow = props => {
 
   useEffect(() => {
     getTrail();
-//    setTrail({
-//      name: "Cool Trail",
-//      description: "Cool Trail is a great trail. It is very steep and has no nice views",
-//      distance: 5.4,
-//      elevationGain: 2200,
-//      difficulty: "medium",
-//      zipCode: "01623",
-//      rating: 5,
-//      imgUrl: "https://virginiatrails.files.wordpress.com/2020/08/trail.jpg"
-//    })
   }, []);
 
   return (
@@ -52,13 +42,13 @@ const TrailShow = props => {
         <h1>{name}</h1>
       </div>
       <div className="grid-x grid-margin-x">
-        <div className="cell small-4">
+        <div className="cell small-12 medium-4">
           <p>Difficulty: {difficulty}</p>
-          <p>Rating: {rating}</p>
           <p>Distance: {distance} miles</p>
+          <p>Elevation Gain: {elevationGain} ft</p>
           <p>Location: {`${zipCode}`}</p>
         </div>
-        <div className="cell small-8">
+        <div className="cell small-12 medium-8">
           <h3>Description</h3>
           <p>{`${description}`}</p>
         </div>
