@@ -25,10 +25,12 @@ const TrailsIndex = props => {
   //map data from fetch into tiles
   const trailTiles = trails.map(trail => {
     return(
-      <TrailTile 
-        key={trail.id}
-        trail={trail}
-      />
+      <div className="callout primary container">
+        <TrailTile
+          key={trail.id}
+          trail={trail}
+        />
+      </div>
     )
   })
 
