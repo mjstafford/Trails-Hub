@@ -9,6 +9,7 @@ import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 
 import NavBar from './NavBar';
 import TrailShow from './TrailShow';
+import TrailsIndex from './TrailsIndex';
 
 const App = (props) => {
   useEffect(() => {
@@ -26,6 +27,7 @@ const App = (props) => {
                 <Redirect to="/trails" />
               </Route>
               <Route exact path="/trails/:id" component={TrailShow} />
+              <Route exact path="/trails" component={TrailsIndex} />
             </Switch>
           </div>
         <div class="cell auto"></div>
