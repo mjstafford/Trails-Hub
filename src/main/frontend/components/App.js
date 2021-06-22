@@ -6,6 +6,7 @@ import $ from "jquery";
 import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 
 import NavBar from './NavBar';
+import TrailsIndex from './TrailsIndex';
 
 const App = (props) => {
   useEffect(() => {
@@ -19,6 +20,7 @@ const App = (props) => {
         <Route exact path="/">
           <Redirect to="/trails" />
         </Route>
+        <Route exact path="/trails" component={TrailsIndex} />
       </Switch>
     </BrowserRouter>
   );

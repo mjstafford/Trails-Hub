@@ -18,4 +18,12 @@ public class TrailService {
   public Iterable<Trail> findAll() {
     return trailRepository.findAll();
   }
+
+  public Long count() {
+    return trailRepository.count();
+  }
+
+  public void save(Trail trail) {
+    trailRepository.save(trail);
+  }
 }
