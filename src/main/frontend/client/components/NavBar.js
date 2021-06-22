@@ -6,7 +6,8 @@ const NavBar = () => {
     <div className="top-bar">
       <div className="top-bar-left">
         <ul className="menu">
-          <Link to="/trails">Trails Hub</Link>
+          <li><Link to="/trails">Trails Hub</Link></li>
+          <li><Link to="/trails/new">Add A New Hike</Link></li>
         </ul>
       </div>
     </div>

@@ -1,13 +1,20 @@
 package com.launchacademy.reviews.controllers;
 
+import com.launchacademy.reviews.exceptions.InvalidFormDataException;
 import com.launchacademy.reviews.exceptions.TrailNotFoundException;
 import com.launchacademy.reviews.models.Trail;
 import com.launchacademy.reviews.services.TrailService;
 import java.util.HashMap;
 import java.util.Map;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -35,5 +42,17 @@ public class TrailsApiV1Controller {
     Map<String, Trail> trailMap = new HashMap<>();
     trailMap.put("trail", trail);
     return trailMap;
+  }
+
+  @PostMapping
+  public ResponseEntity<Trail> addNewTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      System.out.println("ERRORS");
+      throw new InvalidFormDataException(bindingResult.getFieldErrors());
+    }
+    else {
+      System.out.println("Hello");
+      return new ResponseEntity<>(trailService.save(trail), HttpStatus.OK);
+    }
   }
 }

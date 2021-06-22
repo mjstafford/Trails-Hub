@@ -28,7 +28,7 @@ public class TrailService {
     return trailRepository.count();
   }
 
-  public void save(Trail trail) {
-    trailRepository.save(trail);
+  public Trail save(Trail trail) {
+    return trailRepository.save(trail);
   }
 }
