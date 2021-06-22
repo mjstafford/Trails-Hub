@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { hot } from "react-hot-loader/root";
 import "foundation-sites";
 import $ from "jquery";
+import "../assets/scss/main.scss"
+
 
 import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 
