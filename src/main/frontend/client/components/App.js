@@ -20,7 +20,7 @@ const App = (props) => {
     <BrowserRouter>
       <NavBar />
       <div className="grid-x grid-margin-x">
-        <div class="cell auto"></div>
+        <div className="cell auto"></div>
           <div className="cell small-12 medium-8">
             <Switch>
               <Route exact path="/">
@@ -30,7 +30,7 @@ const App = (props) => {
               <Route exact path="/trails" component={TrailsIndex} />
             </Switch>
           </div>
-        <div class="cell auto"></div>
+        <div className="cell auto"></div>
       </div>
     </BrowserRouter>
   );
