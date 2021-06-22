@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -28,13 +29,15 @@ public class Trail {
   @Column
   private String name;
 
+  @NotBlank
   @Column
   private String description;
 
-  @Column
+  @NotNull
+  @Column(columnDefinition = "numeric")
   private Double distance;
 
-  @Column
+  @Column(columnDefinition = "numeric")
   private Double elevationGain;
 
   @Column
