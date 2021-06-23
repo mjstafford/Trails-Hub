@@ -15,6 +15,7 @@ import javax.validation.constraints.Pattern;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.URL;
 
 @Getter
 @Setter
@@ -32,30 +33,31 @@ public class Trail {
   @Column
   private String name;
 
-  @NotBlank
+  @NotBlank(message = "Please give us a description")
   @Column
   private String description;
 
-  @NotNull
-  @DecimalMin("0.1")
+  @NotNull(message = "Enter a distance of at least .1 miles")
+  @DecimalMin(value = "0.1", message = "Enter a distance of at least .1 miles")
   @Column(columnDefinition = "numeric")
   private Double distance;
 
-  @NotNull
-  @Min(0)
+  @NotNull(message = "Enter a valid elevation gain")
+  @Min(value = 0, message = "Enter a valid elevation gain")
   @Column(columnDefinition = "numeric")
   private Double elevationGain;
 
-  @NotBlank
+  @NotBlank(message = "Select a difficulty level for your trail")
   @Column
   private String difficulty;
 
-  @NotBlank
-  @Pattern(regexp = "^\\d{5}$")
+  @NotBlank(message = "must be a 5 digit number")
+  @Pattern(regexp = "^\\d{5}$", message = "must be a 5 digit number")
   @Column
   private String zipCode;
 
-  @NotBlank
+  @NotBlank(message = "must be valid")
+  @URL(message = "must be valid")
   @Column
   private String imgUrl;
 }
