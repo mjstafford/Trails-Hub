@@ -6,20 +6,40 @@ import DifficultyFormField from './DifficultyFormField';
 
 const TrailEdit = (props) => {
   const trailId = props.match.params.id;
-  const {name, description, distance, elevationGain, difficulty, zipCode, imgUrl} = props.location.state.trail;
   const [errors, setErrors] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
   const [formData, setFormData] = useState({
      id: trailId,
-     name: name,
-     description: description,
-     distance: distance,
-     elevationGain: elevationGain,
-     difficulty: difficulty,
-     zipCode: zipCode,
-     imgUrl: imgUrl
+     name: "",
+     description: "",
+     distance: "",
+     elevationGain: "",
+     difficulty: "",
+     zipCode: "",
+     imgUrl: ""
   });
 
+  useEffect(() => {
+    if(props.location.state) {
+      setFormData(props.location.state.trail)
+    } else {
+      getTrail();
+    }
+  }, [])
+
+  const getTrail = async () => {
+    try {
+      const res = await fetch(`/api/v1/trails/${trailId}`)
+      if (!res.ok) {
+        const error = new Error(`${res.status} (${res.statusText})`);
+        throw(error);
+      }
+      const trailData = await res.json();
+      setFormData(trailData.trail);
+    } catch (e) {
+      console.error("Error in fetch: ", e.message);
+    }
+  }
 
   const updateTrail = async () => {
     try {
