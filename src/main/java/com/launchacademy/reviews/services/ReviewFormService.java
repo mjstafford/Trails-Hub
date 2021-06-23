@@ -1,37 +1,69 @@
 package com.launchacademy.reviews.services;
 
+import com.launchacademy.reviews.exceptions.TrailNotFoundException;
 import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.ReviewForm;
+import com.launchacademy.reviews.models.ReviewImage;
+import com.launchacademy.reviews.models.Trail;
+import com.launchacademy.reviews.models.User;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ReviewFormService {
-//  private final TrailService trailService;
-//  private final UserService userService;
-//  private final ReviewService reviewService;
-//  private final ReviewImageService reviewImageService;
-//
-//  @Autowired
-//  public ReviewFormService(TrailService trailService,
-//      UserService userService, ReviewService reviewService,
-//      ReviewImageService reviewImageService) {
-//    this.trailService = trailService;
-//    this.userService = userService;
-//    this.reviewService = reviewService;
-//    this.reviewImageService = reviewImageService;
-//  }
+  private final TrailService trailService;
+  private final UserService userService;
+  private final ReviewService reviewService;
+  private final ReviewImageService reviewImageService;
 
-//  public Review processForm(ReviewForm reviewForm) {
-//    // get trail id
-//
-//    // see if user exists or not
-//    // if not create
-//
-//    // -> user id
-//
-//    // save review -> review id
-//
-//    // save images
-//  }
+  @Autowired
+  public ReviewFormService(TrailService trailService,
+      UserService userService, ReviewService reviewService,
+      ReviewImageService reviewImageService) {
+    this.trailService = trailService;
+    this.userService = userService;
+    this.reviewService = reviewService;
+    this.reviewImageService = reviewImageService;
+  }
+
+  public Review processForm(ReviewForm reviewForm) {
+    // get trail id
+    Integer trailId = reviewForm.getTrailId();
+    Trail trail = trailService.findById(trailId)
+        .orElseThrow(() -> new TrailNotFoundException(trailId));
+
+    // see if user exists or not
+    // if not create
+    // -> user id
+    String userName = reviewForm.getName();
+    Optional<User> userResult = userService.findByName(userName);
+    User user;
+    if (userResult.isEmpty()) {
+      user = new User();
+      user.setName(userName);
+      userService.save(user);
+    }
+    else {
+      user = userResult.get();
+    }
+
+    // save review -> review id
+    Review review = new Review();
+    review.setRating(reviewForm.getRating());
+    review.setComment(reviewForm.getComment());
+    review.setTrail(trail);
+    review.setUser(user);
+    reviewService.save(review);
+
+    // save images
+    if (reviewForm.getImgUrl() == null) {
+      ReviewImage image = new ReviewImage();
+      image.setReview(review);
+      image.setImgUrl(reviewForm.getImgUrl());
+      reviewImageService.save(image);
+    }
+
+    return review;
+  }
 }

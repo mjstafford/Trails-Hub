@@ -61,12 +61,12 @@ public class TrailsApiV1Controller {
   }
 
   @PostMapping("/{id}/reviews")
-  public ResponseEntity<String> createReview(@RequestBody @Valid ReviewForm reviewForm, BindingResult bindingResult) {
+  public ResponseEntity<Review> createReview(@RequestBody @Valid ReviewForm reviewForm, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
       throw new InvalidFormDataException(bindingResult.getFieldErrors());
     }
     else {
-      return new ResponseEntity<>("hioo", HttpStatus.OK);
+      return new ResponseEntity<>(reviewFormService.processForm(reviewForm), HttpStatus.OK);
     }
   }
 }

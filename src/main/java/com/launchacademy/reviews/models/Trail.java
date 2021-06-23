@@ -59,8 +59,8 @@ public class Trail {
   @Column
   private String zipCode;
 
-  @NotBlank(message = "must be valid")
-  @URL(message = "must be valid")
+//  @NotBlank(message = "must be valid")
+//  @URL(message = "must be valid")
   @Column
   private String imgUrl;
 

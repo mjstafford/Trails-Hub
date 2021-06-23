@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
-import ErrorList from './ErrorList'
+import { Redirect } from 'react-router-dom'
 
+import ErrorList from './ErrorList'
 
 const ReviewForm = props => {
   const trailId = props.match.params.id;
