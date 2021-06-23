@@ -29,8 +29,8 @@ public class ReviewImageSeeder {
       reviewImage1.setReview(review1);
 
       ReviewImage reviewImage2 = new ReviewImage();
-      reviewImage1.setImgUrl("https://cdn-assets.alltrails.com/uploads/photo/image/37408533/extra_large_31cbfb3fcf0eafaae4178b718414f75d.jpg");
-      reviewImage1.setReview(review1);
+      reviewImage2.setImgUrl("https://cdn-assets.alltrails.com/uploads/photo/image/37408533/extra_large_31cbfb3fcf0eafaae4178b718414f75d.jpg");
+      reviewImage2.setReview(review1);
 
       reviewImageService.save(reviewImage1);
       reviewImageService.save(reviewImage2);

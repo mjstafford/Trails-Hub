@@ -22,4 +22,8 @@ public class ReviewService {
   public Optional<Review> findById(int id) {
     return reviewRepository.findById(id);
   }
+
+  public void save(Review review) {
+    reviewRepository.save(review);
+  }
 }

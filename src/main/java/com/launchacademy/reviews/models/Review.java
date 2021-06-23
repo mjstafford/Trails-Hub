@@ -2,6 +2,8 @@ package com.launchacademy.reviews.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.sql.Timestamp;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,7 +41,9 @@ public class Review {
   private String comment;
 
   @Column
-  private Timestamp createdAt;
+//  private Timestamp createdAt = new LocalDate.now();
+//  private String createdAt = DateTimeFormatter.ofPattern("MM-dd-yyyy", Locale.ENGLISH).format(LocalDateTime.now());
+  private LocalDate createdAt = LocalDate.now();
 
   @NotNull
   @ManyToOne

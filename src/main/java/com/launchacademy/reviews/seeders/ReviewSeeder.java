@@ -48,6 +48,10 @@ public class ReviewSeeder {
       review3.setComment("It was a cloudy day but the view was a beautiful 360 panoramic. The trail s were a little muddy but definitely worth the views at the summit. It had been 35 years since I hiked this trail and it was better than I remembered! Great hike.");
       review3.setTrail(trail2);
       review3.setUser(user2);
+
+      reviewService.save(review1);
+      reviewService.save(review2);
+      reviewService.save(review3);
     }
   }
 }
