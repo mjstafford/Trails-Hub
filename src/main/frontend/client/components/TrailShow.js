@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
@@ -36,6 +37,8 @@ const TrailShow = props => {
     <div>
       <div>
         <img src={imgUrl} />
+        <Link to={{ pathname: `/trails/${trailId}/reviews/new`, state: { trail: trail} }} >Add Review!</Link>
+
       </div>
       <div>
         <h1>{name}</h1>

@@ -10,6 +10,7 @@ import NavBar from './NavBar';
 import TrailShow from './TrailShow';
 import TrailsIndex from './TrailsIndex';
 import NewTrail from './NewTrail';
+import ReviewForm from './ReviewForm';
 
 const App = (props) => {
   useEffect(() => {
@@ -29,6 +30,7 @@ const App = (props) => {
               <Route exact path="/trails/new" component={NewTrail} />
               <Route exact path="/trails/:id" component={TrailShow} />
               <Route exact path="/trails" component={TrailsIndex} />
+              <Route exact path="/trails/:id/reviews/new" component={ReviewForm} />
             </Switch>
           </div>
         <div className="cell auto"></div>
