@@ -47,11 +47,9 @@ public class TrailsApiV1Controller {
   @PostMapping
   public ResponseEntity<Trail> addNewTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult) {
     if (bindingResult.hasErrors()) {
-      System.out.println("ERRORS");
       throw new InvalidFormDataException(bindingResult.getFieldErrors());
     }
     else {
-      System.out.println("Hello");
       return new ResponseEntity<>(trailService.save(trail), HttpStatus.OK);
     }
   }
