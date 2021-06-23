@@ -28,14 +28,11 @@ public class ReviewFormService {
   }
 
   public Review processForm(ReviewForm reviewForm) {
-    // get trail id
     Integer trailId = reviewForm.getTrailId();
     Trail trail = trailService.findById(trailId)
         .orElseThrow(() -> new TrailNotFoundException(trailId));
 
-    // see if user exists or not
-    // if not create
-    // -> user id
+
     String userName = reviewForm.getName();
     Optional<User> userResult = userService.findByName(userName);
     User user;
@@ -48,7 +45,6 @@ public class ReviewFormService {
       user = userResult.get();
     }
 
-    // save review -> review id
     Review review = new Review();
     review.setRating(reviewForm.getRating());
     review.setComment(reviewForm.getComment());
@@ -56,7 +52,6 @@ public class ReviewFormService {
     review.setUser(user);
     reviewService.save(review);
 
-    // save images
     if (reviewForm.getImgUrl() == null) {
       ReviewImage image = new ReviewImage();
       image.setReview(review);
