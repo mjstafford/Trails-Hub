@@ -1,16 +1,22 @@
-import React from 'react'
+import React from 'react';
 
 const DifficultyFormField = props => {
 
-  const difficulties = ["", "easy", "medium", "hard"];
+  const difficulties = ["Easy", "Moderate", "Hard"];
 
   const difficultyOptions = difficulties.map((level, index) => {
-    return(
-      <option key={index} value={level}>
+    return (
+      <option key={index+1} value={level}>
         {level}
       </option>
-    )
-  })
+    );
+  });
+
+  difficultyOptions.unshift(
+    <option key={0}>
+      Pick an option
+    </option>
+  );
 
   return (
     <div>
@@ -19,7 +25,7 @@ const DifficultyFormField = props => {
         {difficultyOptions}
       </select>
     </div>
-  )
-}
+  );
+};
 
 export default DifficultyFormField;

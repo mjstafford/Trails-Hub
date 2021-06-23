@@ -4,7 +4,6 @@ import "foundation-sites";
 import $ from "jquery";
 import "../assets/scss/main.scss"
 
-
 import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 
 import NavBar from './NavBar';
@@ -20,7 +19,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <NavBar />
-      <div className="grid-x grid-margin-x">
+      <div className="grid-x grid-padding-x">
         <div className="cell auto"></div>
           <div className="cell small-12 medium-8">
             <Switch>

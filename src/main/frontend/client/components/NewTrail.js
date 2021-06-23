@@ -37,7 +37,7 @@ const NewTrail = () => {
         }
       }
       const trail = await res.json();
-      setPetId(trail.id);
+      setTrailId(trail.id);
       setShouldRedirect(true);
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
@@ -53,6 +53,7 @@ const NewTrail = () => {
 
   const submitFormHandler = event => {
     event.preventDefault();
+    setErrors({});
     submitNewTrail();
   };
 
@@ -91,7 +92,8 @@ const NewTrail = () => {
           <input
             name="distance"
             id="distance"
-            type="text"
+            type="number"
+            step=".1"
             value={formData.distance}
             onChange={changeHandler}
           />
@@ -102,7 +104,8 @@ const NewTrail = () => {
           <input
             name="elevationGain"
             id="elevationGain"
-            type="text"
+            type="number"
+            step=".1"
             value={formData.elevationGain}
             onChange={changeHandler}
           />
