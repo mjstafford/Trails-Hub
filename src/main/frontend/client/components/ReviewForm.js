@@ -5,7 +5,6 @@ import ErrorList from './ErrorList'
 const ReviewForm = props => {
   const trailId = props.match.params.id;
   const {name, imgUrl, zipCode} = props.location.state.trail
-  //use state: errors, shouldRedirect, formData
   const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [formData, setFormData] = useState({
@@ -15,7 +14,6 @@ const ReviewForm = props => {
     imgUrls: [],
   })
 
-  //post fetch
   const submitNewReview = async () => {
     try {
       const res = await fetch(`/api/v1/trails/${trailId}/reviews`, {
@@ -57,7 +55,6 @@ const ReviewForm = props => {
     return <Redirect push to={`/trails/${trailId}`} />;
   }
 
-  //return (form)
   return (
     <>
       <h1>Review {name}</h1>
@@ -112,7 +109,7 @@ const ReviewForm = props => {
             name="imgUrl"
             id="imgUrl"
             type="text"
-            value={formData.imgUrls}
+            value={formData.imgUrl}
             onChange={changeHandler}
           />
         </div>
