@@ -2,7 +2,10 @@ package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.exceptions.InvalidFormDataException;
 import com.launchacademy.reviews.exceptions.TrailNotFoundException;
+import com.launchacademy.reviews.models.Review;
+import com.launchacademy.reviews.models.ReviewForm;
 import com.launchacademy.reviews.models.Trail;
+import com.launchacademy.reviews.services.ReviewFormService;
 import com.launchacademy.reviews.services.TrailService;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,11 +24,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/trails")
 public class TrailsApiV1Controller {
-  private TrailService trailService;
+  private final TrailService trailService;
+  private final ReviewFormService reviewFormService;
 
   @Autowired
-  public TrailsApiV1Controller(TrailService trailService) {
+  public TrailsApiV1Controller(TrailService trailService,
+      ReviewFormService reviewFormService) {
     this.trailService = trailService;
+    this.reviewFormService = reviewFormService;
   }
 
   @GetMapping
@@ -51,6 +57,16 @@ public class TrailsApiV1Controller {
     }
     else {
       return new ResponseEntity<>(trailService.save(trail), HttpStatus.OK);
+    }
+  }
+
+  @PostMapping("/{id}/reviews")
+  public ResponseEntity<String> createReview(@RequestBody @Valid ReviewForm reviewForm, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      throw new InvalidFormDataException(bindingResult.getFieldErrors());
+    }
+    else {
+      return new ResponseEntity<>("hioo", HttpStatus.OK);
     }
   }
 }

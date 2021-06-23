@@ -8,10 +8,11 @@ const ReviewForm = props => {
   const [errors, setErrors] = useState({})
   const [shouldRedirect, setShouldRedirect] = useState(false)
   const [formData, setFormData] = useState({
+    trailId: trailId,
     rating: "",
     comment: "",
     name: "",
-    imgUrls: [],
+    imgUrl: "",
   })
 
   const submitNewReview = async () => {
