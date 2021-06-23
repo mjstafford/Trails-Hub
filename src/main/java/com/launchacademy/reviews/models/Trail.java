@@ -44,7 +44,6 @@ public class Trail {
 
   @NotNull(message = "Enter a valid elevation gain")
   @Min(value = 0, message = "Enter a valid elevation gain")
-  //@Pattern(regexp = "^\\d*\\.?\\d*$", message = "Enter a valid elevation gain")
   @Column(columnDefinition = "numeric")
   private Double elevationGain;
 
