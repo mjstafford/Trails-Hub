@@ -19,10 +19,12 @@ import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@DynamicInsert
 @Entity
 @Table(name="reviews")
 public class Review {
@@ -41,9 +43,7 @@ public class Review {
   private String comment;
 
   @Column
-//  private Timestamp createdAt = new LocalDate.now();
-//  private String createdAt = DateTimeFormatter.ofPattern("MM-dd-yyyy", Locale.ENGLISH).format(LocalDateTime.now());
-  private LocalDate createdAt = LocalDate.now();
+  private Timestamp createdAt;
 
   @NotNull
   @ManyToOne
