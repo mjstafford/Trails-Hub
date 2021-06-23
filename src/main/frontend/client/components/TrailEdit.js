@@ -1,27 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import ErrorList from './ErrorList';
 import DifficultyFormField from './DifficultyFormField';
 
-const NewTrail = () => {
+const TrailEdit = (props) => {
+  const trailId = props.match.params.id;
+  const {name, description, distance, elevationGain, difficulty, zipCode, imgUrl} = props.location.state.trail;
   const [errors, setErrors] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [trailId, setTrailId] = useState(null);
   const [formData, setFormData] = useState({
-     name: "",
-     description: "",
-     distance: "",
-     elevationGain: "",
-     difficulty: "",
-     zipCode: "",
-     imgUrl: ""
+     id: trailId,
+     name: name,
+     description: description,
+     distance: distance,
+     elevationGain: elevationGain,
+     difficulty: difficulty,
+     zipCode: zipCode,
+     imgUrl: imgUrl
   });
 
-  const submitNewTrail = async () => {
+
+  const updateTrail = async () => {
     try {
-      const res = await fetch('/api/v1/trails', {
-        method: 'POST',
+      const res = await fetch(`/api/v1/trails/${trailId}/edit`, {
+        method: 'PUT',
         headers: new Headers({
           'Content-Type': 'application/json'
         }),
@@ -36,8 +39,6 @@ const NewTrail = () => {
           throw(error);
         }
       }
-      const trail = await res.json();
-      setTrailId(trail.id);
       setShouldRedirect(true);
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
@@ -54,7 +55,7 @@ const NewTrail = () => {
   const submitFormHandler = event => {
     event.preventDefault();
     setErrors({});
-    submitNewTrail();
+    updateTrail();
   };
 
   if (shouldRedirect) {
@@ -63,7 +64,7 @@ const NewTrail = () => {
 
   return (
     <>
-      <h1>Tell Us About Your Hike!</h1>
+      <h1>Update Trail</h1>
       <form onSubmit={submitFormHandler}>
         <ErrorList errors={errors} />
         <div>
@@ -140,4 +141,4 @@ const NewTrail = () => {
   );
 };
 
-export default NewTrail;
+export default TrailEdit;

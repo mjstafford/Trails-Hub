@@ -47,7 +47,8 @@ const TrailShow = props => {
           <p>Distance: {distance} miles</p>
           <p>Elevation Gain: {elevationGain} ft</p>
           <p>Location: {zipCode}</p>
-          <Link to={`/trails/${trailId}/edit`}>
+          <Link
+            to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
             <button type="button" className="button">Edit Trail</button>
           </Link>
         </div>
