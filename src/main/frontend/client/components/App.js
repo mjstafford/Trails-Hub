@@ -28,6 +28,7 @@ const App = (props) => {
               </Route>
               <Route exact path="/trails/:id" component={TrailShow} />
               <Route exact path="/trails" component={TrailsIndex} />
+              <Route exact path="/trails/:id/edit" component={TrailsIndex} />
             </Switch>
           </div>
         <div className="cell auto"></div>

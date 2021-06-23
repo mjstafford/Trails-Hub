@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom'
 
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
@@ -46,6 +47,9 @@ const TrailShow = props => {
           <p>Distance: {distance} miles</p>
           <p>Elevation Gain: {elevationGain} ft</p>
           <p>Location: {zipCode}</p>
+          <Link to={`/trails/${trailId}/edit`}>
+            <button type="button" className="button">Edit Trail</button>
+          </Link>
         </div>
         <div className="cell small-12 medium-8">
           <h3>Description</h3>
