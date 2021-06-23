@@ -14,6 +14,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,6 +52,17 @@ public class TrailsApiV1Controller {
     }
     else {
       return new ResponseEntity<>(trailService.save(trail), HttpStatus.OK);
+    }
+  }
+
+  @PutMapping("/{id}/edit")
+  public ResponseEntity updateTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult, @PathVariable Integer id) {
+    if (bindingResult.hasErrors()) {
+      throw new InvalidFormDataException(bindingResult.getFieldErrors());
+    } else {
+      trailService.findById(id).orElseThrow(() -> new TrailNotFoundException(id));
+      trailService.save(trail);
+      return new ResponseEntity(HttpStatus.ACCEPTED);
     }
   }
 }
