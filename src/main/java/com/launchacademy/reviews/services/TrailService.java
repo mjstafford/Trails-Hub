@@ -19,6 +19,10 @@ public class TrailService {
     return trailRepository.findAll();
   }
 
+  public Optional<Trail> findById(Integer id) {
+    return trailRepository.findById(id);
+  }
+
   public Long count() {
     return trailRepository.count();
   }
@@ -27,7 +31,7 @@ public class TrailService {
     return trailRepository.save(trail);
   }
 
-  public Optional<Trail> findById(int id) {
-    return trailRepository.findById(id);
+  public void deleteById(Integer id) {
+    trailRepository.deleteById(id);
   }
 }
