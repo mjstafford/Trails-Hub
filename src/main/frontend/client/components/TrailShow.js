@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 
-import ReviewTile from './ReviewTile'
+import ReviewTile from './ReviewTile';
 
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
@@ -61,6 +61,10 @@ const TrailShow = props => {
           <p><span className="labelKey">Distance</span>: {distance} miles</p>
           <p><span className="labelKey">Elevation Gain</span>: {elevationGain} ft</p>
           <p><span className="labelKey">Location</span>: {zipCode}</p>
+          <Link
+            to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
+            <button type="button" className="button">Edit Trail</button>
+          </Link>
         </div>
         <div className="cell small-12 medium-8">
           <h5>Description</h5>

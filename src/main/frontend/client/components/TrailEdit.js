@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 
 import ErrorList from './ErrorList';
 import DifficultyFormField from './DifficultyFormField';
 
-const NewTrail = () => {
+const TrailEdit = (props) => {
+  const trailId = props.match.params.id;
   const [errors, setErrors] = useState({});
   const [shouldRedirect, setShouldRedirect] = useState(false);
-  const [trailId, setTrailId] = useState(null);
   const [formData, setFormData] = useState({
+     id: trailId,
      name: "",
      description: "",
      distance: "",
@@ -18,10 +19,32 @@ const NewTrail = () => {
      imgUrl: ""
   });
 
-  const submitNewTrail = async () => {
+  useEffect(() => {
+    if(props.location.state) {
+      setFormData(props.location.state.trail)
+    } else {
+      getTrail();
+    }
+  }, [])
+
+  const getTrail = async () => {
     try {
-      const res = await fetch('/api/v1/trails', {
-        method: 'POST',
+      const res = await fetch(`/api/v1/trails/${trailId}`)
+      if (!res.ok) {
+        const error = new Error(`${res.status} (${res.statusText})`);
+        throw(error);
+      }
+      const trailData = await res.json();
+      setFormData(trailData.trail);
+    } catch (e) {
+      console.error("Error in fetch: ", e.message);
+    }
+  }
+
+  const updateTrail = async () => {
+    try {
+      const res = await fetch(`/api/v1/trails/${trailId}/edit`, {
+        method: 'PUT',
         headers: new Headers({
           'Content-Type': 'application/json'
         }),
@@ -36,8 +59,6 @@ const NewTrail = () => {
           throw(error);
         }
       }
-      const trail = await res.json();
-      setTrailId(trail.id);
       setShouldRedirect(true);
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
@@ -54,7 +75,7 @@ const NewTrail = () => {
   const submitFormHandler = event => {
     event.preventDefault();
     setErrors({});
-    submitNewTrail();
+    updateTrail();
   };
 
   if (shouldRedirect) {
@@ -63,7 +84,7 @@ const NewTrail = () => {
 
   return (
     <>
-      <h1>Tell Us About Your Hike!</h1>
+      <h1>Update Trail</h1>
       <form onSubmit={submitFormHandler}>
         <ErrorList errors={errors} />
         <div>
@@ -140,4 +161,4 @@ const NewTrail = () => {
   );
 };
 
-export default NewTrail;
+export default TrailEdit;
