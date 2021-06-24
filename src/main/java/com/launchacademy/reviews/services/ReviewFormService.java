@@ -57,7 +57,6 @@ public class ReviewFormService {
       image.setImgUrl(reviewForm.getImgUrl());
       reviewImageService.save(image);
     }
-
     return review;
   }
 }
