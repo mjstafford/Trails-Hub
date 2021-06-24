@@ -95,15 +95,22 @@ const TrailShow = props => {
           <p><span className="labelKey">Distance</span>: {distance} miles</p>
           <p><span className="labelKey">Elevation Gain</span>: {elevationGain} ft</p>
           <p><span className="labelKey">Location</span>: {zipCode}</p>
-          <Link
-            to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
-            <button type="button" className="button">Edit Trail</button>
-          </Link>
+          <div className="grid-x grid-margin-x">
+            <div className="cell small-5">
+              <Link
+                to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
+                <button type="button" className="button">Edit Trail</button>
+              </Link>
+            </div>
+            <div className="cell small-6">
+              <button type="button" className="button" onClick={onClickDeleteHandler}>Delete Trail </button>
+            </div>
+          </div>
         </div>
-        <div className="cell small-12 medium-8">
-          <h5>Description</h5>
-          <p>{description}</p>
-        </div>
+          <div className="cell small-12 medium-8">
+            <h5>Description</h5>
+            <p>{description}</p>
+          </div>
       </div>
       <div>
         <h4>User Reviews</h4>
