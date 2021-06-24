@@ -2,7 +2,6 @@ package com.launchacademy.reviews.services;
 
 import com.launchacademy.reviews.models.Trail;
 import com.launchacademy.reviews.repositories.TrailRepository;
-import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

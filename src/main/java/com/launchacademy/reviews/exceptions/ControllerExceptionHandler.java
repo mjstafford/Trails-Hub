@@ -28,7 +28,9 @@ public class ControllerExceptionHandler {
   @ExceptionHandler(TrailNotFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
   @ResponseBody
-  public String trailNotFoundExceptionHandler(TrailNotFoundException e) {
-    return e.getMessage();
+  public Map<String, String> trailNotFoundExceptionHandler(TrailNotFoundException e) {
+    Map<String, String> map = new HashMap<>();
+    map.put("error", e.getMessage());
+    return map;
   }
 }

@@ -77,6 +77,7 @@ const TrailShow = props => {
       <div>
         <img src={imgUrl} />
       </div>
+      <Link to={{ pathname: `/trails/${trailId}/reviews/new`, state: { trail: trail} }} >Add Review</Link>
       <div>
         <h1>{name}</h1>
       </div>
