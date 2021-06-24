@@ -10,6 +10,7 @@ import NavBar from './NavBar';
 import TrailShow from './TrailShow';
 import TrailsIndex from './TrailsIndex';
 import NewTrail from './NewTrail';
+import ReviewForm from './ReviewForm';
 import TrailEdit from './TrailEdit';
 
 const App = (props) => {
@@ -27,10 +28,11 @@ const App = (props) => {
               <Route exact path="/">
                 <Redirect to="/trails" />
               </Route>
+              <Route exact path="/trails/:id/reviews/new" component={ReviewForm} />
+              <Route exact path="/trails/:id/edit" component={TrailEdit} />
               <Route exact path="/trails/new" component={NewTrail} />
               <Route exact path="/trails/:id" component={TrailShow} />
               <Route exact path="/trails" component={TrailsIndex} />
-              <Route exact path="/trails/:id/edit" component={TrailEdit} />
             </Switch>
           </div>
         <div className="cell auto"></div>
