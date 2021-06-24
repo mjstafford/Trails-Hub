@@ -87,8 +87,6 @@ public class TrailsApiV1Controller {
   public void deleteTrail(@PathVariable Integer id) {
     if(trailService.findById(id).isPresent()){
       trailService.deleteById(id);
-    } else {
-      System.out.println("bad path");
     }
   }
 }
