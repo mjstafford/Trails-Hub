@@ -75,15 +75,11 @@ public class TrailsApiV1Controller {
 
   @DeleteMapping("/{id}/delete")
   public void deleteTrail(@PathVariable Integer id) {
-    System.out.println("server side");
     if(trailService.findById(id).isPresent()){
-      System.out.println("good path");
       trailService.deleteById(id);
     } else {
       System.out.println("bad path");
-
     }
-
   }
 
   @PostMapping("/{id}/reviews")

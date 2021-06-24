@@ -3,6 +3,7 @@ package com.launchacademy.reviews.models;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.sql.Timestamp;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,7 +56,7 @@ public class Review {
   @JsonIgnoreProperties("reviews")
   private User user;
 
-  @OneToMany(mappedBy = "review")
+  @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true, mappedBy = "review")
   @JsonIgnoreProperties("review")
   private List<ReviewImage> reviewImages;
 }

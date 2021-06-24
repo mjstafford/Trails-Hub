@@ -30,31 +30,26 @@ const TrailShow = props => {
     }
   }
 
-    const deleteTrail = async () => {
-      console.log("HIT deleteTrail fetch")
-      try {
-      const res = await fetch(`/api/v1/trails/${trailId}/delete`, {
-        method: 'DELETE',
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify({"trailId": trailId})
-      });
+  const deleteTrail = async () => {
+    console.log("HIT deleteTrail fetch")
+    try {
+    const res = await fetch(`/api/v1/trails/${trailId}/delete`, {
+      method: 'DELETE',
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    });
+    if (!res.ok) {
       if (!res.ok) {
-        //conflict error code
-        if(res.status === 409) {
-          const body = await res.json();
-          return setErrors(body.errors);
-        } else {
-          const error = new Error(`${res.status} (${res.statusText})`);
-          throw(error);
-        }
-      }
-        setShouldRedirect(true);
-      } catch (e) {
-        console.error("Error in fetch: ", e.message);
+        const error = new Error(`${res.status} (${res.statusText})`);
+        throw(error);
       }
     }
+      setShouldRedirect(true);
+    } catch (e) {
+      console.error("Error in fetch: ", e.message);
+    }
+  }
 
   useEffect(() => {
     getTrail();
