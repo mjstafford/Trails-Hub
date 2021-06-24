@@ -32,7 +32,6 @@ public class ReviewFormService {
     Trail trail = trailService.findById(trailId)
         .orElseThrow(() -> new TrailNotFoundException(trailId));
 
-
     String userName = reviewForm.getName();
     Optional<User> userResult = userService.findByName(userName);
     User user;
@@ -52,13 +51,12 @@ public class ReviewFormService {
     review.setUser(user);
     reviewService.save(review);
 
-    if (reviewForm.getImgUrl() == null) {
+    if (!reviewForm.getImgUrl().isBlank()) {
       ReviewImage image = new ReviewImage();
       image.setReview(review);
       image.setImgUrl(reviewForm.getImgUrl());
       reviewImageService.save(image);
     }
-
     return review;
   }
 }

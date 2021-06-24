@@ -62,6 +62,16 @@ public class TrailsApiV1Controller {
     }
   }
 
+  @PostMapping("/{id}/reviews")
+  public ResponseEntity<Review> createReview(@RequestBody @Valid ReviewForm reviewForm, BindingResult bindingResult) {
+    if (bindingResult.hasErrors()) {
+      throw new InvalidFormDataException(bindingResult.getFieldErrors());
+    }
+    else {
+      return new ResponseEntity<>(reviewFormService.processForm(reviewForm), HttpStatus.OK);
+    }
+  }
+
   @PutMapping("/{id}/edit")
   public ResponseEntity updateTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult, @PathVariable Integer id) {
     if (bindingResult.hasErrors()) {
@@ -79,16 +89,6 @@ public class TrailsApiV1Controller {
       trailService.deleteById(id);
     } else {
       System.out.println("bad path");
-    }
-  }
-
-  @PostMapping("/{id}/reviews")
-  public ResponseEntity<Review> createReview(@RequestBody @Valid ReviewForm reviewForm, BindingResult bindingResult) {
-    if (bindingResult.hasErrors()) {
-      throw new InvalidFormDataException(bindingResult.getFieldErrors());
-    }
-    else {
-      return new ResponseEntity<>(reviewFormService.processForm(reviewForm), HttpStatus.OK);
     }
   }
 }

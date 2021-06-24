@@ -35,5 +35,4 @@ public class ReviewImage {
   @JoinColumn(name="review_id")
   @JsonIgnoreProperties("reviewImages")
   private Review review;
-
 }
