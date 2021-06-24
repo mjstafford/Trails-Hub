@@ -6,6 +6,7 @@ import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.ReviewForm;
 import com.launchacademy.reviews.models.Trail;
 import com.launchacademy.reviews.services.ReviewFormService;
+import com.launchacademy.reviews.services.ReviewService;
 import com.launchacademy.reviews.services.TrailService;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,12 +29,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrailsApiV1Controller {
   private final TrailService trailService;
   private final ReviewFormService reviewFormService;
+  private final ReviewService reviewService;
 
   @Autowired
   public TrailsApiV1Controller(TrailService trailService,
-      ReviewFormService reviewFormService) {
+      ReviewFormService reviewFormService, ReviewService reviewService) {
     this.trailService = trailService;
     this.reviewFormService = reviewFormService;
+    this.reviewService = reviewService;
   }
 
   @GetMapping
@@ -87,6 +90,14 @@ public class TrailsApiV1Controller {
   public void deleteTrail(@PathVariable Integer id) {
     if(trailService.findById(id).isPresent()){
       trailService.deleteById(id);
+    }
+  }
+
+  //should move isPresent() check to reviewService!
+  @DeleteMapping("/{trailId}/reviews/{id}/delete")
+  public void deleteReview(@PathVariable Integer id) {
+    if(reviewService.findById(id).isPresent()){
+      reviewService.deleteById(id);
     }
   }
 }
