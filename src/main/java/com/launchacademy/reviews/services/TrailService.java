@@ -31,4 +31,8 @@ public class TrailService {
   public Trail save(Trail trail) {
     return trailRepository.save(trail);
   }
+
+  public void deleteById(Integer id) {
+    trailRepository.deleteById(id);
+  }
 }
