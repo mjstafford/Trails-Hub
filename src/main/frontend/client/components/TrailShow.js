@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {Link} from 'react-router-dom';
 
+import ReviewTile from './ReviewTile'
+
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
+  const [reviews, setReviews] = useState([]);
   const trailId = props.match.params.id;
   const {
     name,
@@ -24,10 +27,20 @@ const TrailShow = props => {
       }
       const trailData = await res.json();
       setTrail(trailData.trail);
+      setReviews(trailData.trail.reviews);
     } catch (e) {
       console.error("Error in fetch: ", e.message);
     }
   }
+
+  const reviewTiles = reviews.map(review => {
+    return (
+      <ReviewTile
+        key={review.id}
+        review={review}
+      />
+    );
+  });
 
   useEffect(() => {
     getTrail();
@@ -53,6 +66,9 @@ const TrailShow = props => {
           <h3>Description</h3>
           <p>{description}</p>
         </div>
+      </div>
+      <div>
+        {reviewTiles}
       </div>
     </div>
   );
