@@ -14,7 +14,10 @@ const ReviewTile = props => {
       />
     );
   });
-  
+
+  const date = new Date(createdAt);
+  const dateString = date.toDateString();
+
   return (
     <div className="callout">
       <div className="grid-x grid-margin-x">
@@ -23,10 +26,10 @@ const ReviewTile = props => {
         </div>
         <div className="cell small-10">
           <div>
-            <p>{createdAt}</p>
+            <p>{dateString}</p>
           </div>
           <div>
-            <p>{rating}/5</p>
+            <p>Rating: {rating}/5</p>
           </div>
         </div>
       </div>
