@@ -39,6 +39,7 @@ const TrailShow = props => {
       <ReviewTile
         key={review.id}
         review={review}
+        trailId={trailId}
       />
     );
   });
