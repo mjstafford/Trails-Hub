@@ -37,18 +37,17 @@ const TrailShow = props => {
   const deleteTrail = async () => {
     console.log("HIT deleteTrail fetch")
     try {
-      const res = await fetch(`/api/v1/trails/${trailId}/delete`, {
+      const res = await fetch(`/api/v1/trails/${trailId}`, {
         method: 'DELETE',
         headers: new Headers({
           'Content-Type': 'application/json'
         })
       });
       if (!res.ok) {
-        if (!res.ok) {
-          const error = new Error(`${res.status} (${res.statusText})`);
-          throw(error);
-        }
+        const error = new Error(`${res.status} (${res.statusText})`);
+        throw(error);
       }
+
       setShouldRedirect(true);
     } catch (e) {
       console.error("Error in fetch: ", e.message);
@@ -57,17 +56,15 @@ const TrailShow = props => {
 
   const deleteReview = async (reviewId) => {
     try {
-      const res = await fetch(`/api/v1/trails/${trailId}/reviews/${reviewId}/delete`, {
+      const res = await fetch(`/api/v1/trails/${trailId}/reviews/${reviewId}`, {
         method: 'DELETE',
         headers: new Headers({
           'Content-Type': 'application/json'
         })
       });
       if (!res.ok) {
-        if (!res.ok) {
-          const error = new Error(`${res.status} (${res.statusText})`);
-          throw(error);
-        }
+        const error = new Error(`${res.status} (${res.statusText})`);
+        throw(error);
       }
       setReviews(
         reviews.filter(review => review.id != reviewId)
