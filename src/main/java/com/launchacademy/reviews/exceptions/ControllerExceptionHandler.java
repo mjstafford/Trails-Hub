@@ -33,4 +33,13 @@ public class ControllerExceptionHandler {
     map.put("error", e.getMessage());
     return map;
   }
+
+  @ExceptionHandler(ReviewNotFoundException.class)
+  @ResponseStatus(HttpStatus.NOT_FOUND)
+  @ResponseBody
+  public Map<String, String> reviewNotFoundExceptionHandler(ReviewNotFoundException e) {
+    Map<String, String> map = new HashMap<>();
+    map.put("error", e.getMessage());
+    return map;
+  }
 }

@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
+import {Redirect} from 'react-router-dom'
 
 import ReviewImageTile from './ReviewImageTile';
 
 const ReviewTile = props => {
   const { name } = props.review.user;
-  const { comment, rating, createdAt, reviewImages } = props.review;
+  const { id, comment, rating, createdAt, reviewImages } = props.review;
+  const trailId = props.trailId
+
+  const [shouldRedirect, setShouldRedirect] = useState(false)
 
   const reviewImageTiles = reviewImages.map((imgUrl, index) => {
     return (
@@ -17,6 +21,11 @@ const ReviewTile = props => {
 
   const date = new Date(createdAt);
   const dateString = date.toDateString();
+
+  const deleteHandler = event => {
+    event.preventDefault()
+    props.deleteReviewHandler(id);
+  }
 
   return (
     <div className="callout">
@@ -42,6 +51,9 @@ const ReviewTile = props => {
         <div className="cell small-12">
           {reviewImageTiles}
         </div>
+      </div>
+      <div>
+        <button type="button" className="button" onClick={deleteHandler}>Delete Review</button>
       </div>
     </div>
   );

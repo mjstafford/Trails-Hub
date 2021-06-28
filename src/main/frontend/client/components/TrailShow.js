@@ -34,31 +34,41 @@ const TrailShow = props => {
     }
   }
 
-  const reviewTiles = reviews.map(review => {
-    return (
-      <ReviewTile
-        key={review.id}
-        review={review}
-      />
-    );
-  });
-
   const deleteTrail = async () => {
     console.log("HIT deleteTrail fetch")
     try {
-    const res = await fetch(`/api/v1/trails/${trailId}/delete`, {
-      method: 'DELETE',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    });
-    if (!res.ok) {
+      const res = await fetch(`/api/v1/trails/${trailId}`, {
+        method: 'DELETE',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      });
       if (!res.ok) {
         const error = new Error(`${res.status} (${res.statusText})`);
         throw(error);
       }
-    }
+
       setShouldRedirect(true);
+    } catch (e) {
+      console.error("Error in fetch: ", e.message);
+    }
+  }
+
+  const deleteReview = async (reviewId) => {
+    try {
+      const res = await fetch(`/api/v1/trails/${trailId}/reviews/${reviewId}`, {
+        method: 'DELETE',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        })
+      });
+      if (!res.ok) {
+        const error = new Error(`${res.status} (${res.statusText})`);
+        throw(error);
+      }
+      setReviews(
+        reviews.filter(review => review.id != reviewId)
+      )
     } catch (e) {
       console.error("Error in fetch: ", e.message);
     }
@@ -68,16 +78,34 @@ const TrailShow = props => {
     getTrail();
   }, []);
 
-  if (shouldRedirect) {
-    return <Redirect push to={`/trails`} />
-  }
-
-  const onClickDeleteHandler = event => {
+  const deleteTrailHandler = event => {
     event.preventDefault()
     var result = confirm("Click 'OK' to delete the trail")
     if (result) {
         deleteTrail()
     }
+  }
+
+  const deleteReviewHandler = reviewId => {
+    var result = confirm("Click 'OK' to delete the review")
+    if (result) {
+        deleteReview(reviewId)
+    }
+  }
+
+  const reviewTiles = reviews.map(review => {
+    return (
+      <ReviewTile
+        key={review.id}
+        review={review}
+        trailId={trailId}
+        deleteReviewHandler={deleteReviewHandler}
+      />
+    );
+  });
+
+  if (shouldRedirect) {
+    return <Redirect push to={`/trails`} />
   }
 
   return (
@@ -103,7 +131,7 @@ const TrailShow = props => {
               </Link>
             </div>
             <div className="cell small-6">
-              <button type="button" className="button" onClick={onClickDeleteHandler}>Delete Trail </button>
+              <button type="button" className="button" onClick={deleteTrailHandler}>Delete Trail </button>
             </div>
           </div>
         </div>
