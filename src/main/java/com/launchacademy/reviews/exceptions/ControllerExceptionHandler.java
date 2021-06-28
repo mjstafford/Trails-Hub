@@ -42,5 +42,4 @@ public class ControllerExceptionHandler {
     map.put("error", e.getMessage());
     return map;
   }
-
 }
