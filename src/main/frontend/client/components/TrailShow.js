@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Link, Redirect } from 'react-router-dom'
+import {Link} from 'react-router-dom';
 
 import ReviewTile from './ReviewTile';
 
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
   const [reviews, setReviews] = useState([]);
-  const [shouldRedirect, setShouldRedirect] = useState(false)
   const trailId = props.match.params.id;
   const {
     name,
@@ -39,46 +38,14 @@ const TrailShow = props => {
       <ReviewTile
         key={review.id}
         review={review}
+        trailId={trailId}
       />
     );
   });
 
-  const deleteTrail = async () => {
-    console.log("HIT deleteTrail fetch")
-    try {
-    const res = await fetch(`/api/v1/trails/${trailId}/delete`, {
-      method: 'DELETE',
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    });
-    if (!res.ok) {
-      if (!res.ok) {
-        const error = new Error(`${res.status} (${res.statusText})`);
-        throw(error);
-      }
-    }
-      setShouldRedirect(true);
-    } catch (e) {
-      console.error("Error in fetch: ", e.message);
-    }
-  }
-
   useEffect(() => {
     getTrail();
   }, []);
-
-  if (shouldRedirect) {
-    return <Redirect push to={`/trails`} />
-  }
-
-  const onClickDeleteHandler = event => {
-    event.preventDefault()
-    var result = confirm("Click 'OK' to delete the trail")
-    if (result) {
-        deleteTrail()
-    }
-  }
 
   return (
     <div>
@@ -95,22 +62,15 @@ const TrailShow = props => {
           <p><span className="labelKey">Distance</span>: {distance} miles</p>
           <p><span className="labelKey">Elevation Gain</span>: {elevationGain} ft</p>
           <p><span className="labelKey">Location</span>: {zipCode}</p>
-          <div className="grid-x grid-margin-x">
-            <div className="cell small-5">
-              <Link
-                to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
-                <button type="button" className="button">Edit Trail</button>
-              </Link>
-            </div>
-            <div className="cell small-6">
-              <button type="button" className="button" onClick={onClickDeleteHandler}>Delete Trail </button>
-            </div>
-          </div>
+          <Link
+            to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
+            <button type="button" className="button">Edit Trail</button>
+          </Link>
         </div>
-          <div className="cell small-12 medium-8">
-            <h5>Description</h5>
-            <p>{description}</p>
-          </div>
+        <div className="cell small-12 medium-8">
+          <h5>Description</h5>
+          <p>{description}</p>
+        </div>
       </div>
       <div>
         <h4>User Reviews</h4>
