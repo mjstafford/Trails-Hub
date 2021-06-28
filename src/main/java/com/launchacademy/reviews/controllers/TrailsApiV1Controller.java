@@ -1,6 +1,7 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.exceptions.InvalidFormDataException;
+import com.launchacademy.reviews.exceptions.ReviewNotFoundException;
 import com.launchacademy.reviews.exceptions.TrailNotFoundException;
 import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.ReviewForm;
@@ -87,17 +88,16 @@ public class TrailsApiV1Controller {
   }
 
   @DeleteMapping("/{id}/delete")
-  public void deleteTrail(@PathVariable Integer id) {
-    if(trailService.findById(id).isPresent()){
-      trailService.deleteById(id);
-    }
+  public ResponseEntity deleteTrail(@PathVariable Integer id) {
+    trailService.findById(id).orElseThrow(() -> new TrailNotFoundException(id));
+    trailService.deleteById(id);
+    return new ResponseEntity(HttpStatus.OK);
   }
 
-  //should move isPresent() check to reviewService!
   @DeleteMapping("/{trailId}/reviews/{id}/delete")
-  public void deleteReview(@PathVariable Integer id) {
-    if(reviewService.findById(id).isPresent()){
-      reviewService.deleteById(id);
-    }
+  public ResponseEntity deleteReview(@PathVariable Integer id) {
+    reviewService.findById(id).orElseThrow(() -> new ReviewNotFoundException(id));
+    reviewService.deleteById(id);
+    return new ResponseEntity(HttpStatus.OK);
   }
 }
