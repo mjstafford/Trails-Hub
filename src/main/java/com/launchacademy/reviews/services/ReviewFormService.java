@@ -3,7 +3,7 @@ package com.launchacademy.reviews.services;
 import com.launchacademy.reviews.exceptions.TrailNotFoundException;
 import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.ReviewForm;
-import com.launchacademy.reviews.models.ReviewImage;
+import com.launchacademy.reviews.models.Image;
 import com.launchacademy.reviews.models.Trail;
 import com.launchacademy.reviews.models.User;
 import java.util.Optional;
@@ -15,16 +15,14 @@ public class ReviewFormService {
   private final TrailService trailService;
   private final UserService userService;
   private final ReviewService reviewService;
-  private final ReviewImageService reviewImageService;
 
   @Autowired
   public ReviewFormService(TrailService trailService,
-      UserService userService, ReviewService reviewService,
-      ReviewImageService reviewImageService) {
+      UserService userService, ReviewService reviewService
+      ) {
     this.trailService = trailService;
     this.userService = userService;
     this.reviewService = reviewService;
-    this.reviewImageService = reviewImageService;
   }
 
   public Review processForm(ReviewForm reviewForm) {
@@ -52,10 +50,10 @@ public class ReviewFormService {
     reviewService.save(review);
 
     if (!reviewForm.getImgUrl().isBlank()) {
-      ReviewImage image = new ReviewImage();
-      image.setReview(review);
-      image.setImgUrl(reviewForm.getImgUrl());
-      reviewImageService.save(image);
+      Image image = new Image();
+//      image.setReview(review);
+//      image.setImgUrl(reviewForm.getImgUrl());
+    //  reviewImageService.save(image);
     }
     return review;
   }

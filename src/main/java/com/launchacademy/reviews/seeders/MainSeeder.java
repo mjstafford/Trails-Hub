@@ -25,6 +25,6 @@ public class MainSeeder implements CommandLineRunner {
     trailSeeder.seed();
     userSeeder.seed();
     reviewSeeder.seed();
-    reviewImageSeeder.seed();
+    //reviewImageSeeder.seed();
   }
 }

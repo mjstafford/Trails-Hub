@@ -56,7 +56,7 @@ public class Review {
   @JsonIgnoreProperties("reviews")
   private User user;
 
-  @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true, mappedBy = "review")
-  @JsonIgnoreProperties("review")
-  private List<ReviewImage> reviewImages;
+  @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
+  @JoinColumn(name="id")
+  private List<Image> reviewImages;
 }

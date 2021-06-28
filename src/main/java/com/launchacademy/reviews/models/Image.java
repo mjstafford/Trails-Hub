@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -19,20 +20,15 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name="review_images")
-public class ReviewImage {
+@Table(name="images")
+public class Image {
   @Id
-  @SequenceGenerator(name="review_images_generator", sequenceName = "review_images_id_seq", allocationSize = 1)
-  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "review_images_generator")
+  @SequenceGenerator(name="images_generator", sequenceName = "images_id_seq", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "images_generator")
   @Column(nullable = false, unique = true)
   private Integer id;
 
-  @NotBlank
-  @Column
-  private String imgUrl;
-
-  @ManyToOne
-  @JoinColumn(name="review_id")
-  @JsonIgnoreProperties("reviewImages")
-  private Review review;
+  @Lob
+  @Column(columnDefinition = "BYTEA")
+  private byte[] content;
 }

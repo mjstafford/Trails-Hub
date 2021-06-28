@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 
 import ErrorList from './ErrorList';
 import DifficultyFormField from './DifficultyFormField';
+import ImageUploader from './ImageUploader'
 
 const NewTrail = () => {
   const [errors, setErrors] = useState({});
@@ -125,14 +126,7 @@ const NewTrail = () => {
           />
         </div>
         <div>
-          <label htmlFor="imgUrl">Image URL: </label>
-          <input
-            name="imgUrl"
-            id="imgUrl"
-            type="text"
-            value={formData.imgUrl}
-            onChange={changeHandler}
-          />
+          <ImageUploader />
         </div>
         <input type="submit" className="button" />
       </form>
