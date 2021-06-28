@@ -39,6 +39,7 @@ const TrailShow = props => {
         key={review.id}
         review={review}
         trailId={trailId}
+        trail={trail}
       />
     );
   });

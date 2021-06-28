@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { Redirect } from 'react-router-dom'
 
 import ErrorList from './ErrorList'
 
 const ReviewEditForm = props => {
 
-  const [formData, setFormdata] = useState(props.review)
+  const [formData, setFormData] = useState(props.review)
   const [errors, setErrors] = useState({})
+  const [redirect, setRedirect] = useState(false)
 
   const reviewId = props.review.id
   const trailId = props.trailId
@@ -30,22 +32,48 @@ const ReviewEditForm = props => {
           throw(error);
         }
       }
+      // props.editHandler()
+      setRedirect(true)
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
     }
   };
 
   const changeHandler = event => {
-    setFormData({
-      ...formData,
-      [event.currentTarget.name]: event.currentTarget.value
-    });
+    if(event.currentTarget.name == "imgUrl") {
+      setFormData({
+        ...formData,
+        reviewImages: [
+          {[event.currentTarget.name]: event.currentTarget.value}
+        ]
+      })
+    } else {
+      setFormData({
+        ...formData,
+        [event.currentTarget.name]: event.currentTarget.value
+      });
+    }
   };
 
   const submitHandler = (event) => {
     event.preventDefault()
     setErrors({});
     editReview()
+  }
+
+  useEffect(() => {
+
+    setFormData({
+      ...formData,
+      trail: props.trail,
+      reviewImages: [
+        {imgUrl: (formData.reviewImages.length > 0) ? formData.reviewImages[0].imgUrl : ""}
+      ]
+    })
+  }, [])
+
+  if(redirect) {
+    return <Redirect push to={`/trails/${trailId}`} />
   }
 
   return (
@@ -137,7 +165,7 @@ const ReviewEditForm = props => {
             name="imgUrl"
             id="imgUrl"
             type="text"
-            value={ (formData.reviewImages) ? formData.reviewImages[0].imgUrl : "" }
+            value={ (formData.reviewImages.length > 0) ? formData.reviewImages[0].imgUrl : "" }
             onChange={changeHandler}
           />
         </div>

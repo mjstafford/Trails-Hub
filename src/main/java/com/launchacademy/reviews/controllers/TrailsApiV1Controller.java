@@ -1,11 +1,13 @@
 package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.exceptions.InvalidFormDataException;
+import com.launchacademy.reviews.exceptions.ReviewNotFoundException;
 import com.launchacademy.reviews.exceptions.TrailNotFoundException;
 import com.launchacademy.reviews.models.Review;
 import com.launchacademy.reviews.models.ReviewForm;
 import com.launchacademy.reviews.models.Trail;
 import com.launchacademy.reviews.services.ReviewFormService;
+import com.launchacademy.reviews.services.ReviewService;
 import com.launchacademy.reviews.services.TrailService;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,12 +30,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class TrailsApiV1Controller {
   private final TrailService trailService;
   private final ReviewFormService reviewFormService;
+  private final ReviewService reviewService;
 
   @Autowired
   public TrailsApiV1Controller(TrailService trailService,
-      ReviewFormService reviewFormService) {
+      ReviewFormService reviewFormService, ReviewService reviewService) {
     this.trailService = trailService;
     this.reviewFormService = reviewFormService;
+    this.reviewService = reviewService;
   }
 
   @GetMapping
@@ -69,6 +73,17 @@ public class TrailsApiV1Controller {
     }
     else {
       return new ResponseEntity<>(reviewFormService.processForm(reviewForm), HttpStatus.OK);
+    }
+  }
+
+  @PutMapping("/{id}/reviews/{reviewId}")
+  public ResponseEntity<Review> editReview(@RequestBody @Valid Review reviewUpdate, BindingResult bindingResult, @PathVariable Integer reviewId) {
+    if (bindingResult.hasErrors()) {
+      throw new InvalidFormDataException(bindingResult.getFieldErrors());
+    }
+    else {
+      Review review = reviewService.findById(reviewId).orElseThrow(() -> new ReviewNotFoundException(reviewId));
+      return new ResponseEntity<>(reviewService.updateReview(review, reviewUpdate), HttpStatus.ACCEPTED);
     }
   }
 

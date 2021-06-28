@@ -6,6 +6,8 @@ import com.launchacademy.reviews.models.ReviewForm;
 import com.launchacademy.reviews.models.ReviewImage;
 import com.launchacademy.reviews.models.Trail;
 import com.launchacademy.reviews.models.User;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -59,4 +61,23 @@ public class ReviewFormService {
     }
     return review;
   }
+
+//  public Review updateForm(ReviewForm reviewForm, Integer reviewId) {
+//    Review review = reviewService.findById(reviewId).get();
+//    List<ReviewImage> reviewImages = review.getReviewImages();
+//    review.setRating(reviewForm.getRating());
+//    review.setComment(reviewForm.getComment());
+//    reviewService.save(review);
+//
+//    if(reviewImages.size() > 0) {
+//      reviewImages.get(0).setImgUrl(reviewForm.getImgUrl());
+//      reviewImageService.save(reviewImages.get(0));
+//    } else {
+//      ReviewImage image = new ReviewImage();
+//      image.setImgUrl(reviewForm.getImgUrl());
+//      image.setReview(review);
+//      reviewImageService.save(image);
+//    }
+//    return review;
+//  }
 }

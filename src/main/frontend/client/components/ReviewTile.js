@@ -23,7 +23,7 @@ const ReviewTile = (props) => {
   console.log(props.review)
   if (editMode) {
     return (
-      <ReviewEditForm review={props.review} editHandler={editHandler} trailId={props.trailId} dateString={dateString} />
+      <ReviewEditForm review={props.review} editHandler={editHandler} trailId={props.trailId} trail={props.trail} dateString={dateString} />
     )
   } else {
     return (
