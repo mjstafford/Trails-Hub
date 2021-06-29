@@ -43,12 +43,10 @@ public class TrailService {
 
   public Object create(Trail trail) {
     List<Image> trailImages = new ArrayList<>();
-
     for (Image image : trail.getImages()) {
       trailImages.add(imageService.findById(image.getId()).get());
     }
     trail.setImages(trailImages);
-    trailRepository.save(trail);
-    return trail;
+    return trailRepository.save(trail);
   }
 }

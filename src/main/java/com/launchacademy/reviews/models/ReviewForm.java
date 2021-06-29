@@ -1,11 +1,11 @@
 package com.launchacademy.reviews.models;
 
+import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.URL;
 
 @Getter
 @Setter
@@ -23,6 +23,5 @@ public class ReviewForm {
 
   private String comment;
 
-  @URL
-  private String imgUrl;
+  private List<Image> images;
 }

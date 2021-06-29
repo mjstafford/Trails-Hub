@@ -62,7 +62,6 @@ public class TrailsApiV1Controller {
       throw new InvalidFormDataException(bindingResult.getFieldErrors());
     }
     else {
-      System.out.println("save");
       return new ResponseEntity(trailService.create(trail), HttpStatus.OK);
     }
   }

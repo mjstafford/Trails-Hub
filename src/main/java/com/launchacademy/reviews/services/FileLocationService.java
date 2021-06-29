@@ -3,6 +3,7 @@ package com.launchacademy.reviews.services;
 import com.launchacademy.reviews.models.Image;
 import com.launchacademy.reviews.repositories.FileSystemRepository;
 import com.launchacademy.reviews.repositories.ImageRepository;
+import java.io.File;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.http.HttpStatus;
@@ -24,11 +25,12 @@ public class FileLocationService {
   public Image save(byte[] bytes, String imageName) throws Exception {
     String location = fsRepository.save(bytes, imageName);
 
-    return dbRepository.save(new Image(imageName, location));
+    File image = new File(location);
+    return dbRepository.save(new Image(image.getName(), location));
   }
 
-  public FileSystemResource find(Integer imageId) {
-    Image image = dbRepository.findById(imageId)
+  public FileSystemResource find(String imageName) {
+    Image image = dbRepository.findByImageName(imageName)
         .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
     return fsRepository.findInFileSystem(image.getLocation());

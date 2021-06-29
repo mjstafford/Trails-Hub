@@ -23,8 +23,8 @@ public class ReviewService {
     return reviewRepository.findById(id);
   }
 
-  public void save(Review review) {
-    reviewRepository.save(review);
+  public Review save(Review review) {
+    return reviewRepository.save(review);
   }
 
   public void deleteById(Integer id) {

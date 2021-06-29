@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import { Redirect } from 'react-router-dom'
 
+import ImageUploader from './ImageUploader'
 import ErrorList from './ErrorList'
 
 const ReviewForm = props => {
@@ -13,9 +14,9 @@ const ReviewForm = props => {
     rating: "",
     comment: "",
     name: "",
-    imgUrl: "",
+    images: [],
   })
-
+  console.log(formData.images)
   const submitNewReview = async () => {
     try {
       const res = await fetch(`/api/v1/trails/${trailId}/reviews`, {
@@ -52,6 +53,13 @@ const ReviewForm = props => {
     setErrors({});
     submitNewReview();
   };
+
+  const addImage = image => {
+    setFormData({
+      ...formData,
+      images: [ ...formData.images, image]
+    });
+  }
 
   if (shouldRedirect) {
     return <Redirect push to={`/trails/${trailId}`} />;
@@ -106,14 +114,7 @@ const ReviewForm = props => {
           </div>
         </div>
         <div>
-          <label htmlFor="imgUrl">Image URL: </label>
-          <input
-            name="imgUrl"
-            id="imgUrl"
-            type="text"
-            value={formData.imgUrl}
-            onChange={changeHandler}
-          />
+          <ImageUploader addImage={addImage} />
         </div>
         <input type="submit"/>
       </form>

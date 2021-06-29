@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
@@ -57,6 +58,10 @@ public class Review {
   private User user;
 
   @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true)
-  @JoinColumn(name="id")
-  private List<Image> reviewImages;
+  @JoinTable(
+      name="reviews_images",
+      joinColumns = @JoinColumn(name="review_id"),
+      inverseJoinColumns = @JoinColumn(name="image_id")
+  )
+  private List<Image> images;
 }

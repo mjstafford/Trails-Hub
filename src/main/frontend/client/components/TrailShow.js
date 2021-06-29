@@ -111,7 +111,7 @@ const TrailShow = props => {
   return (
     <div>
       <div>
-        { images ? <img src={"data:image/png;base64," + images[0].content} /> : null }
+        { (images && images.length > 0 ? <img src={"/images/" + images[0].imageName} /> : null) }
       </div>
       <Link to={{ pathname: `/trails/${trailId}/reviews/new`, state: { trail: trail} }} >Add Review</Link>
       <div>

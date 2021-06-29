@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import {Redirect} from 'react-router-dom'
 
-import ReviewImageTile from './ReviewImageTile';
+import ImageTile from './ImageTile';
 
 const ReviewTile = props => {
   const { name } = props.review.user;
-  const { id, comment, rating, createdAt, reviewImages } = props.review;
+  const { id, comment, rating, createdAt, images } = props.review;
+  const [shouldRedirect, setShouldRedirect] = useState(false)
   const trailId = props.trailId
 
-  const [shouldRedirect, setShouldRedirect] = useState(false)
-
-  const reviewImageTiles = reviewImages.map((imgUrl, index) => {
+  const imageTiles = images.map((image, index) => {
+    debugger
     return (
-      <ReviewImageTile
+      <ImageTile
         key={index}
-        imgUrl={imgUrl}
+        imageName={image.imageName}
       />
     );
   });
@@ -49,7 +49,7 @@ const ReviewTile = props => {
       </div>
       <div className="grid-x grid-margin-x">
         <div className="cell small-12">
-          {reviewImageTiles}
+          {imageTiles}
         </div>
       </div>
       <div>

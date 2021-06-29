@@ -28,7 +28,7 @@ const ImageUploader = props => {
     setImages([...images, image]);
   };
 
-  const changeHandler = event => {
+  const changeHandler = async event => {
     const image = event.currentTarget.files[0];
 
     const reader = new FileReader();
@@ -36,7 +36,8 @@ const ImageUploader = props => {
       const imageData = event.target.result;
       addImage(imageData);
     });
-    console.log(reader.readAsDataURL(image));
+    //console.log(reader.readAsDataURL(image));
+    //console.log(reader.readAsDataURL(image));
 
     setImage(image);
   };

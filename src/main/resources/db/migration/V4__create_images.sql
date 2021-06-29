@@ -3,3 +3,13 @@ CREATE TABLE images (
   image_name VARCHAR(255) NOT NULL,
   location VARCHAR(255) NOT NULL
 );
+
+CREATE TABLE trails_images (
+  trail_id INTEGER NOT NULL REFERENCES trails,
+  image_id INTEGER PRIMARY KEY NOT NULL REFERENCES images
+);
+
+CREATE TABLE reviews_images (
+  review_id INTEGER NOT NULL REFERENCES reviews,
+  image_id INTEGER PRIMARY KEY NOT NULL REFERENCES images
+);

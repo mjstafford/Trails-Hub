@@ -50,8 +50,8 @@ public class ImageController {
     return fileLocationService.save(file.getBytes(), file.getOriginalFilename());
   }
 
-  @GetMapping(value = "/{imageId}", produces = MediaType.IMAGE_JPEG_VALUE)
-  public FileSystemResource downloadImage(@PathVariable Integer imageId) throws Exception {
-    return fileLocationService.find(imageId);
+  @GetMapping(value = "/{imageName}", produces = MediaType.IMAGE_JPEG_VALUE)
+  public FileSystemResource downloadImage(@PathVariable String imageName) throws Exception {
+    return fileLocationService.find(imageName);
   }
 }

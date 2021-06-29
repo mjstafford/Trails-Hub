@@ -8,7 +8,7 @@ const TrailTile = props =>{
     <div className="grid-x grid-margin-x ">
       <div className="cell small-12 medium-6 large-6">
         <Link to={`/trails/${id}`} >
-         { images ? <img src={"data:image/png;base64," + images[0].content} /> : null }
+         { (images && images.length > 0 ? <img src={"/images/" + images[0].imageName} /> : null) }
         </Link>
       </div>
       <div className="callout secondary cell small-12 medium-6 large-4">
