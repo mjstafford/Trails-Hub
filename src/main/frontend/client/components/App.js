@@ -36,6 +36,9 @@ const App = (props) => {
             </Switch>
           </div>
         <div className="cell auto"></div>
+        <footer>
+          
+        </footer>
       </div>
     </BrowserRouter>
   );
