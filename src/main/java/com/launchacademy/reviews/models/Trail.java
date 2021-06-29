@@ -65,7 +65,7 @@ public class Trail {
   @Column
   private String imgUrl;
 
-  @OneToMany(cascade= CascadeType.ALL, orphanRemoval=true, mappedBy = "trail")
+  @OneToMany(cascade= CascadeType.REMOVE, orphanRemoval=true, mappedBy = "trail")
   @JsonIgnoreProperties("trail")
   private List<Review> reviews;
 }

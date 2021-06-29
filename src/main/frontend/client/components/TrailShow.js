@@ -99,6 +99,8 @@ const TrailShow = props => {
         key={review.id}
         review={review}
         trailId={trailId}
+        trail={trail}
+        getTrail={getTrail}
         deleteReviewHandler={deleteReviewHandler}
       />
     );
@@ -135,10 +137,10 @@ const TrailShow = props => {
             </div>
           </div>
         </div>
-          <div className="cell small-12 medium-8">
-            <h5>Description</h5>
-            <p>{description}</p>
-          </div>
+        <div className="cell small-12 medium-8">
+          <h5>Description</h5>
+          <p>{description}</p>
+        </div>
       </div>
       <div>
         <h4>User Reviews</h4>

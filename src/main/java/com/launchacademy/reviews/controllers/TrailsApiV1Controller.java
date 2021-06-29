@@ -76,6 +76,17 @@ public class TrailsApiV1Controller {
     }
   }
 
+  @PutMapping("/{id}/reviews/{reviewId}")
+  public ResponseEntity<Review> editReview(@RequestBody @Valid Review reviewUpdate, BindingResult bindingResult, @PathVariable Integer reviewId) {
+    if (bindingResult.hasErrors()) {
+      throw new InvalidFormDataException(bindingResult.getFieldErrors());
+    }
+    else {
+      Review review = reviewService.findById(reviewId).orElseThrow(() -> new ReviewNotFoundException(reviewId));
+      return new ResponseEntity<>(reviewService.updateReview(review, reviewUpdate), HttpStatus.ACCEPTED);
+    }
+  }
+
   @PutMapping("/{id}/edit")
   public ResponseEntity<HttpStatus> updateTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult, @PathVariable Integer id) {
     if (bindingResult.hasErrors()) {
