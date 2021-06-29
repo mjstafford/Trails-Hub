@@ -88,20 +88,27 @@ public class TrailsApiV1Controller {
   }
 
   @PutMapping("/{id}/edit")
-  public ResponseEntity updateTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult, @PathVariable Integer id) {
+  public ResponseEntity<HttpStatus> updateTrail(@RequestBody @Valid Trail trail, BindingResult bindingResult, @PathVariable Integer id) {
     if (bindingResult.hasErrors()) {
       throw new InvalidFormDataException(bindingResult.getFieldErrors());
     } else {
       trailService.findById(id).orElseThrow(() -> new TrailNotFoundException(id));
       trailService.save(trail);
-      return new ResponseEntity(HttpStatus.ACCEPTED);
+      return new ResponseEntity<>(HttpStatus.ACCEPTED);
     }
   }
 
-  @DeleteMapping("/{id}/delete")
-  public void deleteTrail(@PathVariable Integer id) {
-    if(trailService.findById(id).isPresent()){
-      trailService.deleteById(id);
-    }
+  @DeleteMapping("/{id}")
+  public ResponseEntity<HttpStatus> deleteTrail(@PathVariable Integer id) {
+    trailService.findById(id).orElseThrow(() -> new TrailNotFoundException(id));
+    trailService.deleteById(id);
+    return new ResponseEntity<>(HttpStatus.OK);
+  }
+
+  @DeleteMapping("/{trailId}/reviews/{id}")
+  public ResponseEntity<HttpStatus> deleteReview(@PathVariable Integer id) {
+    reviewService.findById(id).orElseThrow(() -> new ReviewNotFoundException(id));
+    reviewService.deleteById(id);
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 }

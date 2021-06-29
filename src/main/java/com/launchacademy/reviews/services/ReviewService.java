@@ -56,4 +56,8 @@ public class ReviewService {
     }
     return review;
   }
+
+  public void deleteById(Integer id) {
+    reviewRepository.deleteById(id);
+  }
 }
