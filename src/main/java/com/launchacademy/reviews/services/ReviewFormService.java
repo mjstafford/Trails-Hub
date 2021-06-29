@@ -61,8 +61,4 @@ public class ReviewFormService {
     }
     return review;
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 1efc55e468c7c5f7908080f82be8eba441a2915c
