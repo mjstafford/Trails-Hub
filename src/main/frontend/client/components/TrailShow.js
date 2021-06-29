@@ -40,6 +40,7 @@ const TrailShow = props => {
         review={review}
         trailId={trailId}
         trail={trail}
+        getTrail={getTrail}
       />
     );
   });

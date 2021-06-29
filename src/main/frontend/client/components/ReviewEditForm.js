@@ -32,8 +32,10 @@ const ReviewEditForm = props => {
           throw(error);
         }
       }
-      // props.editHandler()
+      // const body = await res.json();
       setRedirect(true)
+      props.getTrail()
+      editHandler()
     } catch(err) {
       console.error(`Error in fetch: ${err.message}`)
     }
@@ -62,7 +64,7 @@ const ReviewEditForm = props => {
   }
 
   useEffect(() => {
-
+    // let unmounted = false
     setFormData({
       ...formData,
       trail: props.trail,
@@ -70,6 +72,7 @@ const ReviewEditForm = props => {
         {imgUrl: (formData.reviewImages.length > 0) ? formData.reviewImages[0].imgUrl : ""}
       ]
     })
+    // return () => { unmounted = true };
   }, [])
 
   if(redirect) {

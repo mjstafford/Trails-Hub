@@ -29,10 +29,6 @@ public class ReviewImageService {
     return reviewImageRepository.findByReview(review);
   }
 
-  public void deleteById(Integer id) {
-    reviewImageRepository.deleteById(id);
-  }
-
   public void delete(ReviewImage reviewImage) {
     reviewImageRepository.delete(reviewImage);
   }

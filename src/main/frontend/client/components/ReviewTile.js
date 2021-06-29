@@ -16,14 +16,15 @@ const ReviewTile = (props) => {
   const date = new Date(createdAt)
   const dateString = date.toDateString()
 
-  const editHandler = (event) => {
+  const editHandler = () => {
     setEditMode(!editMode)
   }
 
   console.log(props.review)
+
   if (editMode) {
     return (
-      <ReviewEditForm review={props.review} editHandler={editHandler} trailId={props.trailId} trail={props.trail} dateString={dateString} />
+      <ReviewEditForm review={props.review} editHandler={editHandler} trailId={props.trailId} trail={props.trail} dateString={dateString} getTrail={props.getTrail}/>
     )
   } else {
     return (
