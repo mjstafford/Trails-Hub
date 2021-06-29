@@ -34,17 +34,6 @@ const TrailShow = props => {
     }
   }
 
-  const reviewTiles = reviews.map(review => {
-    return (
-      <ReviewTile
-        key={review.id}
-        review={review}
-        trailId={trailId}
-        trail={trail}
-        getTrail={getTrail}
-      />
-    );
-  });
   const deleteTrail = async () => {
     console.log("HIT deleteTrail fetch")
     try {
@@ -110,6 +99,8 @@ const TrailShow = props => {
         key={review.id}
         review={review}
         trailId={trailId}
+        trail={trail}
+        getTrail={getTrail}
         deleteReviewHandler={deleteReviewHandler}
       />
     );

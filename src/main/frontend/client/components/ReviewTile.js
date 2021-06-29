@@ -46,24 +46,27 @@ const ReviewTile = (props) => {
           <div className="cell small-2">
             <p>{name}</p>
           </div>
-          <div className="cell small-10">
+          <div className="cell small-8">
             <div>
               <p>{dateString}</p>
             </div>
-            <div className="cell small-2">
-              <button type="button" className="button" onClick={editHandler}>
-                Edit Review
-              </button>
+            <div>
+              <p>Rating: {rating}/5</p>
             </div>
           </div>
-          <div className="grid-x grid-margin-x">
-            <div className="cell small-12">
-              <p>{comment}</p>
-            </div>
+          <div className="cell small-2">
+            <button type="button" className="button" onClick={editHandler}>
+              Edit Review
+            </button>
           </div>
-          <div className="grid-x grid-margin-x">
-            <div className="cell small-12">{reviewImageTiles}</div>
+        </div>
+        <div className="grid-x grid-margin-x">
+          <div className="cell small-12">
+            <p>{comment}</p>
           </div>
+        </div>
+        <div className="grid-x grid-margin-x">
+          <div className="cell small-12">{reviewImageTiles}</div>
         </div>
         <div>
           <button type="button" className="button" onClick={deleteHandler}>
