@@ -7,7 +7,6 @@ const ReviewEditForm = props => {
 
   const [formData, setFormData] = useState(props.review)
   const [errors, setErrors] = useState({})
-  const [redirect, setRedirect] = useState(false)
 
   const reviewId = props.review.id
   const trailId = props.trailId
@@ -32,7 +31,6 @@ const ReviewEditForm = props => {
           throw(error);
         }
       }
-      setRedirect(true)
       props.getTrail()
       editHandler()
     } catch(err) {
@@ -71,10 +69,6 @@ const ReviewEditForm = props => {
       ]
     })
   }, [])
-
-  if(redirect) {
-    return <Redirect push to={`/trails/${trailId}`} />
-  }
 
   return (
     <div className="callout">

@@ -61,23 +61,4 @@ public class ReviewFormService {
     }
     return review;
   }
-
-//  public Review updateForm(ReviewForm reviewForm, Integer reviewId) {
-//    Review review = reviewService.findById(reviewId).get();
-//    List<ReviewImage> reviewImages = review.getReviewImages();
-//    review.setRating(reviewForm.getRating());
-//    review.setComment(reviewForm.getComment());
-//    reviewService.save(review);
-//
-//    if(reviewImages.size() > 0) {
-//      reviewImages.get(0).setImgUrl(reviewForm.getImgUrl());
-//      reviewImageService.save(reviewImages.get(0));
-//    } else {
-//      ReviewImage image = new ReviewImage();
-//      image.setImgUrl(reviewForm.getImgUrl());
-//      image.setReview(review);
-//      reviewImageService.save(image);
-//    }
-//    return review;
-//  }
 }
