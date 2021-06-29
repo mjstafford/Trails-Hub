@@ -33,6 +33,7 @@ const App = (props) => {
               <Route exact path="/trails/new" component={NewTrail} />
               <Route exact path="/trails/:id" component={TrailShow} />
               <Route exact path="/trails" component={TrailsIndex} />
+              <Route exact path="/trails/search/:searchInput" component={TrailsIndex} />
             </Switch>
           </div>
         <div className="cell auto"></div>

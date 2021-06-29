@@ -4,6 +4,7 @@ import TrailTile from './TrailTile'
 
 const TrailsIndex = props => {
   const [trails, setTrails] = useState([])
+  const searchInput = props.match.params.searchInput
 
   const fetchTrails = async () => {
     try {
@@ -20,16 +21,35 @@ const TrailsIndex = props => {
     }
   }
 
-  const trailTiles = trails.map(trail => {
-    return(
-      <div className="callout primary container">
-        <TrailTile
-          key={trail.id}
-          trail={trail}
-        />
-      </div>
-    )
-  })
+  let trailTiles = []
+  if(searchInput) {
+    const filterTrails = trails.filter(trail => {
+      return (
+        trail.name.toLowerCase().includes(searchInput.toLowerCase())
+      )
+    })
+    trailTiles = filterTrails.map(trail => {
+      return(
+        <div className="callout primary container">
+          <TrailTile
+            key={trail.id}
+            trail={trail}
+          />
+        </div>
+      )
+    })
+  } else {
+    trailTiles = trails.map(trail => {
+      return(
+        <div className="callout primary container">
+          <TrailTile
+            key={trail.id}
+            trail={trail}
+          />
+        </div>
+      )
+    })
+  }
 
   useEffect(() => {
     fetchTrails()
