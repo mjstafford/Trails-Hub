@@ -22,9 +22,9 @@ public class MainSeeder implements CommandLineRunner {
 
   @Override
   public void run(String... args) throws Exception {
-    trailSeeder.seed();
-    userSeeder.seed();
-    reviewSeeder.seed();
+//    trailSeeder.seed();
+//    userSeeder.seed();
+//    reviewSeeder.seed();
     //reviewImageSeeder.seed();
   }
 }

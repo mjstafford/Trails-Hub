@@ -16,7 +16,7 @@ const TrailShow = props => {
     difficulty,
     zipCode,
     rating,
-    imgUrl
+    images
   } = trail;
 
   const getTrail = async () => {
@@ -111,7 +111,7 @@ const TrailShow = props => {
   return (
     <div>
       <div>
-        <img src={imgUrl} />
+        { images ? <img src={"data:image/png;base64," + images[0].content} /> : null }
       </div>
       <Link to={{ pathname: `/trails/${trailId}/reviews/new`, state: { trail: trail} }} >Add Review</Link>
       <div>

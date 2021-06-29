@@ -2,13 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const TrailTile = props =>{
-  const {id, name, imgUrl, distance, difficulty, zipCode} = props.trail
+  const {id, name, images, distance, difficulty, zipCode} = props.trail
 
   return(
     <div className="grid-x grid-margin-x ">
       <div className="cell small-12 medium-6 large-6">
         <Link to={`/trails/${id}`} >
-          <img src={imgUrl}></img>
+         { images ? <img src={"data:image/png;base64," + images[0].content} /> : null }
         </Link>
       </div>
       <div className="callout secondary cell small-12 medium-6 large-4">

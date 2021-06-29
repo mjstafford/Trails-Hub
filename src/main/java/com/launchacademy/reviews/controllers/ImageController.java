@@ -2,13 +2,17 @@ package com.launchacademy.reviews.controllers;
 
 import com.launchacademy.reviews.models.Image;
 import com.launchacademy.reviews.repositories.ImageRepository;
+import com.launchacademy.reviews.services.FileLocationService;
 import com.launchacademy.reviews.services.ImageService;
 import com.launchacademy.reviews.services.ImageStorageService;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,17 +22,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @RestController
 @RequestMapping("/images")
-public class ImageUploadController {
+public class ImageController {
 
-  private final ImageService imageService;
+  private final FileLocationService fileLocationService;
 
   @Autowired
-  public ImageUploadController(ImageService imageService) {
-    this.imageService = imageService;
+  public ImageController(FileLocationService fileLocationService) {
+    this.fileLocationService = fileLocationService;
   }
 
 //  @GetMapping("/files/{filename:.+}")
@@ -41,10 +46,12 @@ public class ImageUploadController {
 //  }
 
   @PostMapping
-  public ResponseEntity<Integer> handleFileUpload(@RequestParam("file") MultipartFile file) throws IOException {
-    Image newImage = new Image();
-    newImage.setContent(file.getBytes());
-    return new ResponseEntity(imageService.save(newImage), HttpStatus.ACCEPTED);
+  public Image uploadImage(@RequestParam MultipartFile file) throws Exception {
+    return fileLocationService.save(file.getBytes(), file.getOriginalFilename());
   }
 
+  @GetMapping(value = "/{imageId}", produces = MediaType.IMAGE_JPEG_VALUE)
+  public FileSystemResource downloadImage(@PathVariable Integer imageId) throws Exception {
+    return fileLocationService.find(imageId);
+  }
 }

@@ -25,7 +25,7 @@ public class TrailSeeder {
        trail1.setDistance(7.9);
        trail1.setDifficulty("Moderate");
        trail1.setElevationGain(757.0);
-       trail1.setImgUrl("https://cdn-assets.alltrails.com/uploads/photo/image/19956366/large_00fd782838bef5b35f6e22506c3e44ba.jpg");
+      // trail1.setImgUrl("https://cdn-assets.alltrails.com/uploads/photo/image/19956366/large_00fd782838bef5b35f6e22506c3e44ba.jpg");
        trail1.setZipCode("02148");
 
         Trail trail2 = new Trail();
@@ -38,8 +38,8 @@ public class TrailSeeder {
         trail2.setDistance(3.0);
         trail2.setDifficulty("Moderate");
         trail2.setElevationGain(1181.0);
-        trail2.setImgUrl("https://cdn-assets.alltrails"
-            + ".com/uploads/photo/image/27623677/large_b2fd8b4aaf0a14fc5bc24ed2cef5bc92.jpg");
+       // trail2.setImgUrl("https://cdn-assets.alltrails"
+      //      + ".com/uploads/photo/image/27623677/large_b2fd8b4aaf0a14fc5bc24ed2cef5bc92.jpg");
         trail2.setZipCode("03741");
 
       trailService.save(trail1);

@@ -2,6 +2,7 @@ package com.launchacademy.reviews.services;
 
 import com.launchacademy.reviews.models.Image;
 import com.launchacademy.reviews.repositories.ImageRepository;
+import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,5 +19,7 @@ public class ImageService {
     return repository.save(image);
   }
 
-
+  public Optional<Image> findById(Integer id) {
+    return repository.findById(id);
+  }
 }

@@ -5,6 +5,5 @@ CREATE TABLE trails (
   distance NUMERIC NOT NULL,
   elevation_gain NUMERIC NOT NULL,
   difficulty VARCHAR(50) NOT NULL,
-  zip_code VARCHAR(5) NOT NULL,
-  img_url VARCHAR(255) NOT NULL
+  zip_code VARCHAR(5) NOT NULL
 );

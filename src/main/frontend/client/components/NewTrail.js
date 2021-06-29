@@ -16,7 +16,7 @@ const NewTrail = () => {
      elevationGain: "",
      difficulty: "",
      zipCode: "",
-     imgUrl: ""
+     images: []
   });
 
   const submitNewTrail = async () => {
@@ -57,6 +57,13 @@ const NewTrail = () => {
     setErrors({});
     submitNewTrail();
   };
+
+  const addImage = image => {
+    setFormData({
+      ...formData,
+      images: [ ...formData.images, image]
+    });
+  }
 
   if (shouldRedirect) {
     return <Redirect push to={`/trails/${trailId}`} />;
@@ -126,7 +133,7 @@ const NewTrail = () => {
           />
         </div>
         <div>
-          <ImageUploader />
+          <ImageUploader addImage={addImage} />
         </div>
         <input type="submit" className="button" />
       </form>

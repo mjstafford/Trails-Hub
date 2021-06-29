@@ -1,4 +1,5 @@
 CREATE TABLE images (
   id SERIAL PRIMARY KEY,
-  content BLOB
+  image_name VARCHAR(255) NOT NULL,
+  location VARCHAR(255) NOT NULL
 );
