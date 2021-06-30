@@ -39,13 +39,8 @@ const FilterForm = props => {
 
   const queryString = buildQueryString();
 
-  const submitHandler = event => {
-    event.preventDefault();
-    //props.filterTrails(filterFormData);
-  }
-
   return (
-    <form onSubmit={submitHandler} >
+    <form>
       <div className="grid-x grid-padding-x">
         <div className="cell small-4">
           <label htmlFor="Trail Name">Trail Name: </label>
@@ -76,6 +71,10 @@ const FilterForm = props => {
                 <i className="fas fa-search"></i>
               </button>
           </Link>
+          <Link to={`/trails`}>
+            Clear Filters
+          </Link>
+
         </div>
       </div>
     </form>

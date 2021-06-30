@@ -38,14 +38,12 @@ const TrailsIndex = props => {
       } else if (key === "difficulty") {
         return trail.difficulty === value;
       } else if (key === "distance") {
-        console.log("hello!")
         return trail.distance <= value;
       }
     })
   });
 
   const trailTiles = filteredTrails.map(trail => {
-    //debugger
     return(
       <div className="callout primary container">
         <TrailTile
@@ -55,6 +53,7 @@ const TrailsIndex = props => {
       </div>
     )
   })
+
 
   return(
     <div>
