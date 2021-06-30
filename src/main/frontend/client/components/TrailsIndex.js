@@ -7,7 +7,6 @@ const TrailsIndex = props => {
   const [trails, setTrails] = useState([])
 
   const searchParams = new URLSearchParams(props.location.search)
-  const searchInput = searchParams.get("search")
 
   const fetchTrails = async () => {
     try {
@@ -24,49 +23,43 @@ const TrailsIndex = props => {
     }
   }
 
-
-
-
-  let trailTiles = []
-
-  if(searchInput) {
-    const searchTrails = trails.filter(trail => {
-      return (
-        trail.name.toLowerCase().includes(searchInput.toLowerCase())
-      )
-    })
-
-    trailTiles = searchTrails.map(trail => {
-      return(
-        <div className="callout primary container">
-          <TrailTile
-            key={trail.id}
-            trail={trail}
-          />
-        </div>
-      )
-    })
-  } else {
-    trailTiles = trails.map(trail => {
-      return(
-        <div className="callout primary container">
-          <TrailTile
-            key={trail.id}
-            trail={trail}
-          />
-        </div>
-      )
-    })
-  }
-
   useEffect(() => {
     fetchTrails()
   },[])
 
+  let filteredTrails = [...trails];
+  
+  searchParams.forEach((value, key) => {
+    filteredTrails = filteredTrails.filter(trail => {
+      if (key === "name") {
+        return (
+          trail.name.toLowerCase().includes(value.toLowerCase())
+        );
+      } else if (key === "difficulty") {
+        return trail.difficulty === value;
+      } else if (key === "distance") {
+        console.log("hello!")
+        return trail.distance <= value;
+      }
+    })
+  });
+
+  const trailTiles = filteredTrails.map(trail => {
+    //debugger
+    return(
+      <div className="callout primary container">
+        <TrailTile
+          key={trail.id}
+          trail={trail}
+        />
+      </div>
+    )
+  })
+
   return(
     <div>
       <h1>Explore the Nature!</h1>
-      <FilterForm />
+      <FilterForm searchParams={searchParams} />
       {trailTiles}
     </div>
   )

@@ -1,12 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import DifficultyFormField from './DifficultyFormField';
 
 const FilterForm = props => {
   const [filterFormData, setFilterFormData] = useState({
+    name: '',
     difficulty: '',
+    distance: '',
     zipCode: ''
   });
+
+  useEffect(() => {
+    setFilterFormData({
+      name: '',
+      difficulty: '',
+      zipCode: '',
+      distance: ''
+    });
+  }, [props.searchParams]);
 
   const changeHandler = event => {
     setFilterFormData({
@@ -14,15 +26,58 @@ const FilterForm = props => {
       [event.currentTarget.name]: event.currentTarget.value
     });
   };
+  
+  const buildQueryString = () => {
+    let queryString = '';
+    Object.keys(filterFormData).forEach(field => {
+      if (filterFormData[field]) {
+        queryString += field + "=" + filterFormData[field] + "&"
+      }
+    })
+    return queryString;
+  }
+
+  const queryString = buildQueryString();
 
   const submitHandler = event => {
     event.preventDefault();
-    props.filterTrails(filterFormData);
+    //props.filterTrails(filterFormData);
   }
 
   return (
     <form onSubmit={submitHandler} >
-      <DifficultyFormField changeHandler={changeHandler} difficulty={filterFormData.difficulty} />
+      <div className="grid-x grid-padding-x">
+        <div className="cell small-4">
+          <label htmlFor="Trail Name">Trail Name: </label>
+          <input
+            name="name"
+            type="text"
+            placeholder="search trails"
+            value={filterFormData.name}
+            onChange={changeHandler}
+          />
+        </div>
+        <div>
+          <label htmlFor="distance">Distance: {filterFormData.distance} miles</label>
+          <input 
+            type="range"
+            name="distance"
+            id="distance"
+            min="1"
+            max="20"
+            value={filterFormData.distance}
+            onChange={changeHandler}
+          />
+        </div>
+        <DifficultyFormField changeHandler={changeHandler} difficulty={filterFormData.difficulty} />
+        <div>
+          <Link to={`/trails?${queryString}`}>
+              <button type="button" className="button">
+                <i className="fas fa-search"></i>
+              </button>
+          </Link>
+        </div>
+      </div>
     </form>
   );
 };
