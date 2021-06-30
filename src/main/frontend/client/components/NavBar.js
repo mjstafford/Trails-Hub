@@ -26,7 +26,7 @@ const NavBar = () => {
             onChange={changeHandler}
           />
         </div>
-        <Link to={`/trails/search/${searchInput}`}>
+        <Link to={`/trails?search=${searchInput}`}>
           <button type="button" className="button">
             <i className="fas fa-search"></i>
             {/* Search */}

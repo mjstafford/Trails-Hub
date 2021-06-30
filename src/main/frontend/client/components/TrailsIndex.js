@@ -1,10 +1,13 @@
 import React, { useEffect, useState}  from 'react'
 
 import TrailTile from './TrailTile'
+import FilterForm from './FilterForm'
 
 const TrailsIndex = props => {
   const [trails, setTrails] = useState([])
-  const searchInput = props.match.params.searchInput
+
+  const searchParams = new URLSearchParams(props.location.search)
+  const searchInput = searchParams.get("search")
 
   const fetchTrails = async () => {
     try {
@@ -21,13 +24,18 @@ const TrailsIndex = props => {
     }
   }
 
+
+
+
   let trailTiles = []
+
   if(searchInput) {
     const filterTrails = trails.filter(trail => {
       return (
         trail.name.toLowerCase().includes(searchInput.toLowerCase())
       )
     })
+
     trailTiles = filterTrails.map(trail => {
       return(
         <div className="callout primary container">
@@ -58,6 +66,7 @@ const TrailsIndex = props => {
   return(
     <div>
       <h1>Explore the Nature!</h1>
+      <FilterForm />
       {trailTiles}
     </div>
   )
