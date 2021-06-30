@@ -10,7 +10,7 @@ const NavBar = () => {
         </div>
       </div>
       <div className="add-button top-bar-right">
-        <Link to="/trails/new">Add A New Hike</Link>
+        <Link to="/trails/new">Add A Trail!</Link>
       </div>
     </div>
   );
