@@ -30,13 +30,13 @@ const TrailsIndex = props => {
   let trailTiles = []
 
   if(searchInput) {
-    const filterTrails = trails.filter(trail => {
+    const searchTrails = trails.filter(trail => {
       return (
         trail.name.toLowerCase().includes(searchInput.toLowerCase())
       )
     })
 
-    trailTiles = filterTrails.map(trail => {
+    trailTiles = searchTrails.map(trail => {
       return(
         <div className="callout primary container">
           <TrailTile

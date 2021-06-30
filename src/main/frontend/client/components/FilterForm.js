@@ -3,26 +3,26 @@ import React, { useState } from 'react';
 import DifficultyFormField from './DifficultyFormField';
 
 const FilterForm = props => {
-  const [searchFormData, setSearchFormData] = useState({
+  const [filterFormData, setFilterFormData] = useState({
     difficulty: '',
     zipCode: ''
   });
 
   const changeHandler = event => {
-    setSearchFormData({
-      ...searchFormData,
+    setFilterFormData({
+      ...filterFormData,
       [event.currentTarget.name]: event.currentTarget.value
     });
   };
 
   const submitHandler = event => {
     event.preventDefault();
-    props.filterTrails(searchFormData);
+    props.filterTrails(filterFormData);
   }
 
   return (
     <form onSubmit={submitHandler} >
-      <DifficultyFormField changeHandler={changeHandler} difficulty={searchFormData.difficulty} />
+      <DifficultyFormField changeHandler={changeHandler} difficulty={filterFormData.difficulty} />
     </form>
   );
 };
