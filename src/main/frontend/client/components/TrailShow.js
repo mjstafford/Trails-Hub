@@ -110,6 +110,18 @@ const TrailShow = props => {
     return <Redirect push to={`/trails`} />
   }
 
+  let avgRating
+  if (reviews.length > 0){
+    const allRatings = reviews.map(review => review.rating)
+    const totalStarRating = allRatings.reduce((total, current) => {
+      return total + current
+    })
+    avgRating = Math.round(totalStarRating/allRatings.length)
+  }
+
+  const starRating = "★ ".repeat(avgRating)
+  const missingStars = "★ ".repeat(5-avgRating)
+
   return (
     <div>
       <div>
@@ -120,7 +132,14 @@ const TrailShow = props => {
         <h1>{name}</h1>
       </div>
       <div className="grid-x grid-margin-x callout primary">
-        <div className="cell small-12 medium-4 callout">
+        <div className="cell small-12 medium-12 large-4 callout">
+          <div>
+            <p>
+              <span className="labelKey">Rating:</span>
+              <span className="starRating">{starRating}</span>
+              <span className="missingStars">{missingStars}</span>
+            </p>
+          </div>
           <p><span className="labelKey">Difficulty</span>: {difficulty}</p>
           <p><span className="labelKey">Distance</span>: {distance} miles</p>
           <p><span className="labelKey">Elevation Gain</span>: {elevationGain} ft</p>
@@ -137,7 +156,7 @@ const TrailShow = props => {
             </div>
           </div>
         </div>
-        <div className="cell small-12 medium-8">
+        <div className="cell small-12 medium-12 large-8">
           <h5>Description</h5>
           <p>{description}</p>
         </div>
