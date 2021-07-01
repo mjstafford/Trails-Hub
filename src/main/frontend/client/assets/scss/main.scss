@@ -1,6 +1,7 @@
 @import "./foundation/settings";
 @import "~foundation-sites/scss/foundation";
 @include foundation-everything;
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Raleway&display=swap');
 // place global css here
 
 @font-face {
@@ -39,11 +40,17 @@ $beige: #d9c686;
 *::before,
 *::after {
   box-sizing: border-box;
+  font-family: 'Open Sans';
 }
 
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+  --main-bg: #fffffe;
+  --card-bg: #f8f5f2;
+  --card-paragraph: #222525;
+  --navbar: #078080;
+  --tertiary: #f8f5f2;
 }
 
 .labelKey {
@@ -51,7 +58,7 @@ $beige: #d9c686;
 }
 
 body {
-  background-color: white;
+  background-color: var(--main-bg);
 }
 /* difficulty tags */
 
@@ -80,8 +87,12 @@ body {
 ///////////// TOP BAR ///////////////
 .top-bar {
   height: 6em;
-  background-color: $gray-green;
   align-items: center;
+  background-color: var(--navbar);
+}
+
+.top-bar a {
+  font-family: 'Megrim', cursive;
 }
 
 .logo {
@@ -96,14 +107,13 @@ body {
 }
 
 .logo:hover,.logo:visited {
-  color: white;
+  color: black;
 }
 
 .add-button > a {
   color: white;
-  border: 3px solid orange ;
+  border: 3px solid var(--tertiary);
   border-radius: 10px;
-  color: black;
   font-family: 'JetBrains Mono', monospace;
   margin-right: 3em;
   padding: .5em .75em;
@@ -111,7 +121,7 @@ body {
 }
 
 .add-button > a:hover {
-  color: black;
+  color: var(--card-paragraph);
   background-color: white;
 }
 ///////////// END BAR ///////////////
@@ -124,7 +134,6 @@ body {
 ///////////// FOOTER ///////////////
 
 .footer {
-  background-color: $bluish;
   height: 300px;
   padding: 80px 0;
 }
