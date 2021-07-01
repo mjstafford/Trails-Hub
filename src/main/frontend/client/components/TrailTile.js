@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-import StarRating from './StarRating'
+import AverageStarRating from './AverageStarRating'
 
 const TrailTile = props =>{
   const {id, name, imgUrl, distance, difficulty, zipCode, reviews} = props.trail
@@ -16,7 +16,7 @@ const TrailTile = props =>{
       <div className="callout secondary cell small-12 medium-6 large-4">
         <h3><Link to={`/trails/${id}`} >{name}</Link></h3>
         <h4>
-          <StarRating reviews={reviews} />
+          <AverageStarRating reviews={reviews} />
         </h4>
         <h4>Difficulty: {difficulty}</h4>
         <h4>Distance: {distance}</h4>

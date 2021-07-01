@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 
 import ReviewTile from './ReviewTile';
-import StarRating from './StarRating';
+import AverageStarRating from './AverageStarRating';
 
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
@@ -125,7 +125,7 @@ const TrailShow = props => {
           <div>
             <p>
               <span className="labelKey">Rating:</span>
-              <StarRating reviews={reviews} />
+              <AverageStarRating reviews={reviews} />
             </p>
           </div>
           <p><span className="labelKey">Difficulty</span>: {difficulty}</p>
