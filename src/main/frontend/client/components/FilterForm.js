@@ -12,13 +12,22 @@ const FilterForm = props => {
   });
 
   useEffect(() => {
-    setFilterFormData({
-      name: '',
-      difficulty: '',
-      zipCode: '',
-      distance: ''
+    props.searchParams.forEach((value, key) => {
+      setFilterFormData({
+        ...filterFormData,
+        [key]: value
+      });
     });
   }, [props.searchParams]);
+
+  const clearForm = () => {
+    setFilterFormData({
+       name: '',
+       difficulty: '',
+       distance: '',
+       zipCode: ''
+    });
+  };
 
   const changeHandler = event => {
     setFilterFormData({
@@ -53,7 +62,7 @@ const FilterForm = props => {
           />
         </div>
         <div>
-          <label htmlFor="distance">Distance: {filterFormData.distance} miles</label>
+          <label htmlFor="distance">Distance (miles): {filterFormData.distance}</label>
           <input 
             type="range"
             name="distance"
@@ -71,7 +80,7 @@ const FilterForm = props => {
                 <i className="fas fa-search"></i>
               </button>
           </Link>
-          <Link to={`/trails`}>
+          <Link onClick={clearForm} to={`/trails`}>
             Clear Filters
           </Link>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom'
 
 import ReviewTile from './ReviewTile';
+import AverageStarRating from './AverageStarRating';
 
 const TrailShow = props => {
   const [trail, setTrail] = useState({});
@@ -110,18 +111,6 @@ const TrailShow = props => {
     return <Redirect push to={`/trails`} />
   }
 
-  let avgRating
-  if (reviews.length > 0){
-    const allRatings = reviews.map(review => review.rating)
-    const totalStarRating = allRatings.reduce((total, current) => {
-      return total + current
-    })
-    avgRating = Math.round(totalStarRating/allRatings.length)
-  }
-
-  const starRating = "★ ".repeat(avgRating)
-  const missingStars = "★ ".repeat(5-avgRating)
-
   return (
     <div>
       <div>
@@ -136,8 +125,7 @@ const TrailShow = props => {
           <div>
             <p>
               <span className="labelKey">Rating:</span>
-              <span className="starRating">{starRating}</span>
-              <span className="missingStars">{missingStars}</span>
+              <AverageStarRating reviews={reviews} />
             </p>
           </div>
           <p><span className="labelKey">Difficulty</span>: {difficulty}</p>
