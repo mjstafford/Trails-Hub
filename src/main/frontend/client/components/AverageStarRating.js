@@ -1,6 +1,6 @@
 import React from 'react'
 
-const StarRating = props => {
+const AverageStarRating = props => {
     let starRating = ""
     let missingStars = "★ ".repeat(5)
     let avgRating
@@ -25,4 +25,4 @@ const StarRating = props => {
   )
 }
 
-export default StarRating
+export default AverageStarRating
