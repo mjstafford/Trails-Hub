@@ -23,7 +23,7 @@ const App = (props) => {
   return (
     <BrowserRouter>
       <NavBar />
-      <div className="grid-x grid-padding-x">
+      <div className="main-content grid-x grid-padding-x">
         <div className="cell auto"></div>
           <div className="cell small-12 medium-7">
             <Switch>

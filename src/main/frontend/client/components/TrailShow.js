@@ -123,14 +123,16 @@ const TrailShow = props => {
         </div>
       </h1>
 
-      <div className="grid-x grid-margin-x ">
+      <div className="grid-x grid-margin-x show-content">
         <div className="trail-info-left cell small-12 medium-12 large-6">
           <div className="trail-title-show">
             <h1>
               {name}
-              <button className="config-button" type="button" data-toggle="example-dropdown-bottom-center"><i class="fas fa-cog"></i></button>
-              <div className="dropdown-pane" data-position="bottom" data-alignment="center" id="example-dropdown-bottom-center" data-dropdown data-auto-focus="true">
-                <div className="grid-x grid-margin-x">
+    
+          
+              <button class="config-button" type="button" data-toggle="example-dropdown-1"><i class="fas fa-cog"></i></button>
+              <div class="dropdown-pane" id="example-dropdown-1" data-dropdown data-hover="true" data-hover-pane="true">
+              <div className="grid-x grid-margin-x">
                   <div className="cell small-5">
                     <Link
                       to={{ pathname: `/trails/${trailId}/edit`, state: { trail: trail } }}>
@@ -141,8 +143,9 @@ const TrailShow = props => {
                     <button type="button" className="button" onClick={deleteTrailHandler}>Delete Trail </button>
                   </div>
                 </div>
-              </div>
-                
+                </div>
+
+
             </h1>
           </div>
           <div className="trail-attributes">
@@ -153,7 +156,7 @@ const TrailShow = props => {
               </span>
         
               <span className="trail-attribute">
-                <span className="labelKey">Rating:</span>
+                <span className="labelKey">Rating: </span>
                 <AverageStarRating reviews={reviews} />
               </span>
             </p>

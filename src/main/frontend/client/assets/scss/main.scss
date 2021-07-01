@@ -61,6 +61,11 @@ $secondary-red: #f45d48;
 body {
   background-color: var(--main-bg);
 }
+
+.main-content {
+  margin-top: 6em;
+}
+
 /* difficulty tags */
 
 .difficulty-tag {
@@ -107,6 +112,7 @@ body {
   line-height: .7em;
   margin-left: .5em;
   margin-top: 15px;
+  transition: .3s;
 }
 
 .logo:hover,.logo:visited {
@@ -120,7 +126,7 @@ body {
   font-family: 'JetBrains Mono', monospace;
   margin-right: 3em;
   padding: .5em .75em;
-  transition: .4s;
+  transition: .3s;
 }
 
 .add-button > a:hover {
