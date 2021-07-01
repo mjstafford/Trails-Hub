@@ -51,6 +51,7 @@ $secondary-red: #f45d48;
   --card-bg: #f8f5f2;
   --card-paragraph: #222525;
   --navbar: #078080;
+  --footer: #078080;
   --tertiary: #f8f5f2;
 }
 
@@ -94,7 +95,7 @@ body {
 .top-bar {
   height: 6em;
   height: 5em;
-/*  background-color: $secondary-red; */
+//  background-color: $secondary-red;
   align-items: center;
   background-color: var(--navbar);
 }
@@ -135,6 +136,7 @@ body {
 }
 
 .active {
+//   z-index: -1;
   height: 3em;
 }
 
@@ -150,6 +152,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 }
 
 .sticky.small-window{
@@ -157,7 +160,6 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
 }
 
 .sticky.small-window.active{
@@ -165,7 +167,6 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 9999;
 }
 
 ///////////// END BAR ///////////////
@@ -254,4 +255,27 @@ body {
 
 /////////// END STAR RATING ///////////////
 
+////////// Z-index ///////////////
+
+.z-index {
+  z-index:-9999;
+}
+
+////////// END Z-index ////////////
+
+/////////// FOOTER //////////////////
+.footer{
+  color: white;
+  margin: 200px 0px 0px 0px;
+  background-color: var(--footer);
+  padding: 10px 10px;
+  height: auto;
+  font-family: 'Megrim', cursive;
+}
+
+.other-platform-links {
+  color: #6ad44c;
+}
+
+////////// END FOOTER ///////////////
 @import url(show-page.scss);
