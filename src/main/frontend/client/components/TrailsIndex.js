@@ -36,9 +36,13 @@ const TrailsIndex = props => {
           trail.name.toLowerCase().includes(value.toLowerCase())
         );
       } else if (key === "difficulty") {
-        return trail.difficulty === value;
+        return (
+          trail.difficulty === value
+        );
       } else if (key === "distance") {
-        return trail.distance <= value;
+        return  (
+          trail.distance <= value
+        );
       }
     })
   });
@@ -53,7 +57,6 @@ const TrailsIndex = props => {
       </div>
     )
   })
-
 
   return(
     <div>
