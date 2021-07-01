@@ -1,9 +1,12 @@
 import React, { useEffect, useState}  from 'react'
 
 import TrailTile from './TrailTile'
+import FilterForm from './FilterForm'
 
 const TrailsIndex = props => {
   const [trails, setTrails] = useState([])
+
+  const searchParams = new URLSearchParams(props.location.search)
 
   const fetchTrails = async () => {
     try {
@@ -20,7 +23,27 @@ const TrailsIndex = props => {
     }
   }
 
-  const trailTiles = trails.map(trail => {
+  useEffect(() => {
+    fetchTrails()
+  },[])
+
+  let filteredTrails = [...trails];
+  
+  searchParams.forEach((value, key) => {
+    filteredTrails = filteredTrails.filter(trail => {
+      if (key === "name") {
+        return (
+          trail.name.toLowerCase().includes(value.toLowerCase())
+        );
+      } else if (key === "difficulty") {
+        return trail.difficulty === value;
+      } else if (key === "distance") {
+        return trail.distance <= value;
+      }
+    })
+  });
+
+  const trailTiles = filteredTrails.map(trail => {
     return(
       <div className="callout primary container">
         <TrailTile
@@ -31,13 +54,11 @@ const TrailsIndex = props => {
     )
   })
 
-  useEffect(() => {
-    fetchTrails()
-  },[])
 
   return(
     <div>
       <h1>Explore the Nature!</h1>
+      <FilterForm searchParams={searchParams} />
       {trailTiles}
     </div>
   )

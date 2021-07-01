@@ -26,7 +26,8 @@ const ReviewTile = (props) => {
     props.deleteReviewHandler(id)
   }
 
-  console.log(props.review)
+  const starRating = "★ ".repeat(rating)
+  const missingStars = "★ ".repeat(5-rating)
 
   if (editMode) {
     return (
@@ -51,7 +52,10 @@ const ReviewTile = (props) => {
               <p>{dateString}</p>
             </div>
             <div>
-              <p>Rating: {rating}/5</p>
+              <p>Rating:
+                <span className="starRating">{starRating}</span>
+                <span className="missingStars">{missingStars}</span>
+              </p>
             </div>
           </div>
           <div className="cell small-2">

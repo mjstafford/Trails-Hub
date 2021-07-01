@@ -87,7 +87,7 @@ const ReviewEditForm = props => {
           </button>
         </div>
       </div>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} className="form">
         <ErrorList errors={errors} />
         <div>
           <label htmlFor="comment">Comment: </label>
@@ -102,58 +102,6 @@ const ReviewEditForm = props => {
           />
         </div>
         <div>
-          <div>
-            <input
-              type="radio"
-              id="1"
-              name="rating"
-              value="1"
-              onChange={changeHandler}
-            />
-            <label htmlFor="1">1 star</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="2"
-              name="rating"
-              value="2"
-              onChange={changeHandler}
-            />
-            <label htmlFor="2">2 star</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="3"
-              name="rating"
-              value="3"
-              onChange={changeHandler}
-            />
-            <label htmlFor="3">3 star</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="4"
-              name="rating"
-              value="4"
-              onChange={changeHandler}
-            />
-            <label htmlFor="4">4 star</label>
-          </div>
-          <div>
-            <input
-              type="radio"
-              id="5"
-              name="rating"
-              value="5"
-              onChange={changeHandler}
-            />
-            <label htmlFor="5">5 star</label>
-          </div>
-        </div>
-        <div>
           <label htmlFor="imgUrl">Image URL: </label>
           <input
             name="imgUrl"
@@ -163,7 +111,23 @@ const ReviewEditForm = props => {
             onChange={changeHandler}
           />
         </div>
-        <input type="submit" />
+        <div>
+          <div className="rating">
+            <input type="radio" id="5" name="rating" value="5" onChange={changeHandler} />
+            <label htmlFor="5" className="star-label" ></label>
+            <input type="radio" id="4" name="rating" value="4" onChange={changeHandler} />
+            <label htmlFor="4" className="star-label"></label>
+            <input type="radio" id="3" name="rating" value="3" onChange={changeHandler} />
+            <label htmlFor="3" className="star-label"></label>
+            <input type="radio" id="2" name="rating" value="2" onChange={changeHandler} />
+            <label htmlFor="2" className="star-label"></label>
+            <input type="radio" id="1" name="rating" value="1" onChange={changeHandler} />
+            <label htmlFor="1" className="star-label"></label>
+          </div>
+        </div>
+        <div>
+          <input type="submit" />
+        </div>
       </form>
     </div>
   )
