@@ -5,8 +5,8 @@ const TrailTile = props =>{
   const {id, name, imgUrl, distance, difficulty, zipCode} = props.trail
 
   return(
-    <div className="grid-x grid-margin-x ">
-      <div className="cell small-12 medium-6 large-6">
+    <div className="grid-x grid-margin-x trail-tile">
+      <div className="cell small-12 medium-6 large-6 trail-tile-img">
         <Link to={`/trails/${id}`} >
           <img src={imgUrl}></img>
         </Link>

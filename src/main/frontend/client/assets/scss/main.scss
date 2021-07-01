@@ -30,11 +30,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-$gray-green: #718f94;
-$light-green: #d9efdb;
-$bluish: #91afd6;
-$beige: #d9c686;
-
 *,
 *::before,
 *::after {
@@ -44,21 +39,31 @@ $beige: #d9c686;
 :root {
   -moz-tab-size: 4;
   tab-size: 4;
+  --main-bg: #f8f5f2;
+}
+
+body {
+  background-color: var(--main-bg);
+}
+
+.trail-tile {
+  height: 10em;
+}
+
+.trail-tile-img {
+  height: 0.5em;
 }
 
 .labelKey {
   font-weight: bold;
 }
 
-body {
-  background-color: $light-green;
-}
 
 
 ///////////// TOP BAR ///////////////
 .top-bar {
   height: 6em;
-  background-color: $gray-green;
+  // background-color: $gray-green;
   align-items: center;
 }
 
@@ -102,7 +107,7 @@ body {
 ///////////// FOOTER ///////////////
 
 .footer {
-  background-color: $bluish;
+  // background-color: $bluish;
   height: 300px;
   padding: 80px 0;
 }
