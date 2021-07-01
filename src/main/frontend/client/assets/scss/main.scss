@@ -51,9 +51,31 @@ $beige: #d9c686;
 }
 
 body {
-  background-color: $light-green;
+  background-color: white;
+}
+/* difficulty tags */
+
+.difficulty-tag {
+  padding: 5px;
+  font-size: .75em;
+  font-weight: bold;
+  margin-top: 0px;
+  border-radius: 5px;
 }
 
+.Moderate {
+  background-color: gold;
+}
+
+.Easy {
+  background-color: mediumspringgreen;
+}
+
+.Hard {
+  background-color: red;
+}
+
+/* end difficulty tags */
 
 ///////////// TOP BAR ///////////////
 .top-bar {
@@ -166,5 +188,17 @@ body {
   color: #ccc;
 }
 
+.star {
+  font-size: 1.6em;
+  letter-spacing: -0.125em;
+  -webkit-text-stroke: 1px dimgray; /* width and color */
+}
+
+.star-rating-span {
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
 /////////// END STAR RATING ///////////////
 
+@import url(show-page.scss);

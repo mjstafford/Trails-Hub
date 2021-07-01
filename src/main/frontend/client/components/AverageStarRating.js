@@ -18,10 +18,10 @@ const AverageStarRating = props => {
     }
 
   return (
-    <>
-      <span className="starRating">{starRating}</span>
-      <span className="missingStars">{missingStars}</span>
-    </>
+    <span className="star-rating-span">
+      <span className="star starRating">{starRating}</span>
+      <span className="star missingStars">{missingStars}</span>
+    </span>
   )
 }
 
