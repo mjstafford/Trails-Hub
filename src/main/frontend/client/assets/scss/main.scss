@@ -35,6 +35,7 @@ $gray-green: #718f94;
 $light-green: #d9efdb;
 $bluish: #91afd6;
 $beige: #d9c686;
+$secondary-red: #f45d48;
 
 *,
 *::before,
@@ -87,6 +88,8 @@ body {
 ///////////// TOP BAR ///////////////
 .top-bar {
   height: 6em;
+  height: 5em;
+/*  background-color: $secondary-red; */
   align-items: center;
   background-color: var(--navbar);
 }
@@ -98,7 +101,7 @@ body {
 .logo {
   a { color: white; }
   font-family: 'Megrim', cursive;
-  font-size: 2.5em;
+  font-size: 3.5em;
   font-weight: 800;
   letter-spacing: .01em;
   line-height: .7em;
@@ -124,6 +127,41 @@ body {
   color: var(--card-paragraph);
   background-color: white;
 }
+
+.active {
+  height: 3em;
+}
+
+.active .logo {
+  font-size: 2em;
+}
+
+.active .add-button {
+  font-size: .75em;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.sticky.small-window{
+  height: 5em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
+.sticky.small-window.active{
+  height: 3em;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+}
+
 ///////////// END BAR ///////////////
 
 
