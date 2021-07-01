@@ -3,6 +3,8 @@ import { hot } from "react-hot-loader/root";
 import "foundation-sites";
 import $ from "jquery";
 import "../assets/scss/main.scss"
+import "../assets/scss/trailsIndex.scss"
+import "../assets/scss/trailNew.scss"
 
 import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 
@@ -23,7 +25,7 @@ const App = (props) => {
       <NavBar />
       <div className="grid-x grid-padding-x">
         <div className="cell auto"></div>
-          <div className="cell small-12 medium-8">
+          <div className="cell small-12 medium-7">
             <Switch>
               <Route exact path="/">
                 <Redirect to="/trails" />
@@ -37,7 +39,7 @@ const App = (props) => {
           </div>
         <div className="cell auto"></div>
         <footer>
-          
+
         </footer>
       </div>
     </BrowserRouter>
