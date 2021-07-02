@@ -5,6 +5,7 @@ import $ from "jquery";
 import "../assets/scss/main.scss"
 import "../assets/scss/trailsIndex.scss"
 import "../assets/scss/trailNew.scss"
+import "../assets/scss/trailNew.scss"
 
 import { Switch, Redirect, Route, BrowserRouter } from "react-router-dom";
 

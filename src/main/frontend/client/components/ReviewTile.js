@@ -42,26 +42,21 @@ const ReviewTile = (props) => {
     return (
       <div className="callout">
         <div className="grid-x grid-margin-x">
-          <div className="cell small-2">
-            <p>{name}</p>
-          </div>
-          <div className="cell small-8">
-            <div>
-              <p>{dateString}</p>
-            </div>
-            <div>
-              <p>Rating:
+            <div className="review-data">
+
+              <span>
+                <img className="user-image" src="http://localhost:8080/hikericon.png" alt="user icon"/>
+              </span>
+              <span className="username-rating">
+                <p className="user-name">{name}</p>
                 <AverageStarRating reviews={[props.review]}/>
-              </p>
+              </span>
+              <span className="date">
+                {dateString}
+              </span>
             </div>
-          </div>
-          <div className="cell small-2">
-            <button type="button" className="button" onClick={editHandler}>
-              Edit Review
-            </button>
-          </div>
         </div>
-        <div className="grid-x grid-margin-x">
+        <div className="comment-body grid-x grid-margin-x">
           <div className="cell small-12">
             <p>{comment}</p>
           </div>
@@ -69,10 +64,13 @@ const ReviewTile = (props) => {
         <div className="grid-x grid-margin-x">
           <div className="cell small-12">{reviewImageTiles}</div>
         </div>
-        <div>
-          <button type="button" className="button" onClick={deleteHandler}>
-            Delete Review
-          </button>
+        <div >
+          <a className="delete-review" onClick={deleteHandler}>
+            delete
+          </a>
+          <a className="edit-review"onClick={editHandler}>
+            edit
+          </a>
         </div>
       </div>
     )
