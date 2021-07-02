@@ -200,6 +200,7 @@ body {
 
 .rating {
     float: left;
+    margin-bottom: 1rem;
 }
 .rating:not(:checked) > input {
     position:absolute;
@@ -251,6 +252,7 @@ body {
 }
 
 .star-input {
+  line-height: 1em;
   -webkit-text-stroke: 1px dimgray; /* width and color */
   transition: transform .2s;
 }

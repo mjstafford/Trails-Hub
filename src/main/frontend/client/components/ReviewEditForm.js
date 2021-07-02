@@ -12,7 +12,7 @@ const ReviewEditForm = props => {
   const trailId = props.trailId
   const dateString = props.dateString
   const editHandler = props.editHandler
-
+  console.log(props.review)
   const editReview = async () => {
     try {
       const res = await fetch(`/api/v1/trails/${trailId}/reviews/${reviewId}`, {
@@ -73,14 +73,17 @@ const ReviewEditForm = props => {
   return (
     <div className="callout edit-review-container">
       <div className="grid-x grid-margin-x">
-        <div className="cell small-2">
-          <p>{formData.user.name}</p>
-        </div>
-        <div className="cell small-8">
-          <div>
-            <p>{dateString}</p>
+          <div className="review-data">
+            <span>
+              <img className="user-image" src="http://localhost:8080/hikericon.png" alt="user icon"/>
+            </span>
+            <span className="username-rating">
+              <p className="user-name">{props.review.user.name}</p>
+            </span>
+            <span className="date">
+              {dateString}
+            </span>
           </div>
-        </div>
       </div>
       <form onSubmit={submitHandler} className="form">
         <ErrorList errors={errors} />
@@ -107,6 +110,7 @@ const ReviewEditForm = props => {
           />
         </div>
         <div>
+          <label htmlFor="rating">Rating: </label>
           <div className="rating">
             <input type="radio" id="5" name="rating" value="5" onChange={changeHandler} />
             <label htmlFor="5" className="star-input star-label" ></label>
@@ -117,7 +121,7 @@ const ReviewEditForm = props => {
             <input type="radio" id="2" name="rating" value="2" onChange={changeHandler} />
             <label htmlFor="2" className="star-input star-label"></label>
             <input type="radio" id="1" name="rating" value="1" onChange={changeHandler} />
-            <label htmlFor="1" className="star-label"></label>
+            <label htmlFor="1" className="star-input star-label"></label>
           </div>
         </div>
         <div className="edit-review-button-group">

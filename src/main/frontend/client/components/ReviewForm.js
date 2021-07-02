@@ -94,6 +94,7 @@ const ReviewForm = props => {
           />
         </div>
         <div>
+          <label htmlFor="rating">Rating: </label>
           <div className="rating">
             <input type="radio" id="5" name="rating" value="5" onChange={changeHandler} />
             <label htmlFor="5" className="star-input star-label"></label>
