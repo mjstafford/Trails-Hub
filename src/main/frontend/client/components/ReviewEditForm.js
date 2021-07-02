@@ -71,7 +71,7 @@ const ReviewEditForm = props => {
   }, [])
 
   return (
-    <div className="callout">
+    <div className="callout edit-review-container">
       <div className="grid-x grid-margin-x">
         <div className="cell small-2">
           <p>{formData.user.name}</p>
@@ -80,11 +80,6 @@ const ReviewEditForm = props => {
           <div>
             <p>{dateString}</p>
           </div>
-        </div>
-        <div className="cell small-2">
-          <button type="button" className="button" onClick={editHandler}>
-            Cancel
-          </button>
         </div>
       </div>
       <form onSubmit={submitHandler} className="form">
@@ -125,8 +120,15 @@ const ReviewEditForm = props => {
             <label htmlFor="1" className="star-label"></label>
           </div>
         </div>
-        <div>
-          <input type="submit" />
+        <div className="edit-review-button-group">
+          <div>
+            <input type="submit" className="button"/>
+          </div>
+          <div>
+            <button type="button" className="button alert" onClick={editHandler}>
+              Cancel
+            </button>
+          </div>
         </div>
       </form>
     </div>

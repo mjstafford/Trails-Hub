@@ -63,3 +63,16 @@
 .review-config {
   padding-left: 1rem;
 }
+
+.edit-review-container input[type="text"] {
+  border-radius: 10px;
+}
+
+.edit-review-button-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.edit-review-button-group input[type="submit"] {
+  margin-right: 1rem;
+}

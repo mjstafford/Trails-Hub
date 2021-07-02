@@ -15,6 +15,7 @@
   --card-bg: #f8f5f2;
   --card-paragraph: #222525;
   --navbar: #078080;
+  --navbar-hover: #22a5a5;
   --tertiary: #f8f5f2;
 }
 
@@ -32,11 +33,7 @@
   height: 2em;
   border-radius: 10px;
 }
-/*
-// .filter-container input[type='range'] {
-//   background-color: var(--navbar);
-// }
-*/
+
 .filter-container label {
   font-size: 14px;
 }
@@ -72,15 +69,27 @@
 }
 
 .trail-tile-container-single h3 {
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .trail-tile-container-single h4 {
-  font-size: 12px;
+  font-size: 15px;
   color: var(--card-paragraph);
 }
 
 .trail-tile-container-single .text-box {
   width: 60%;
   padding-left: 1rem;
+}
+
+.search-button {
+  margin: 0;
+}
+
+.search-button:hover {
+  background-color: var(--navbar-hover);
+}
+
+.clear-button {
+  margin-left: 0.5rem;
 }

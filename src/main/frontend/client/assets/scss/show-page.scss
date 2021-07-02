@@ -92,10 +92,17 @@
 .trash-can-icon {
   filter: invert(76%) sepia(72%) saturate(4099%) hue-rotate(315deg) brightness(80%) contrast(100%);
   padding-bottom: 1px;
+  transition: transform 0.4s;
 }
 
 .edit-icon {
   filter: invert(58%) sepia(19%) saturate(2627%) hue-rotate(194deg) brightness(95%) contrast(95%);
+  transition: transform 0.4s;
+  padding-right: 0.5rem;
+}
+
+.edit-icon:hover, .trash-can-icon:hover {
+  transform: scale(1.5);
 }
 
 .reviews-header {

@@ -77,14 +77,13 @@ const FilterForm = props => {
         </div>
         <div>
           <Link to={`/trails?${queryString}`}>
-            <button type="button" className="button">
+            <button type="button" className="button search-button">
               <img className="search-icon" src="search-icon.png" />
             </button>
           </Link>
-          <Link onClick={clearForm} to={`/trails`}>
+          <Link onClick={clearForm} to={`/trails`} className="clear-button">
             Clear
           </Link>
-
         </div>
       </div>
     </form>
