@@ -12,6 +12,7 @@ import TrailsIndex from './TrailsIndex';
 import NewTrail from './NewTrail';
 import ReviewForm from './ReviewForm';
 import TrailEdit from './TrailEdit';
+import Footer from './Footer';
 
 const App = (props) => {
   useEffect(() => {
@@ -36,10 +37,8 @@ const App = (props) => {
             </Switch>
           </div>
         <div className="cell auto"></div>
-        <footer>
-
-        </footer>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 };

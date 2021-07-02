@@ -51,6 +51,7 @@ $secondary-red: #f45d48;
   --card-bg: #f8f5f2;
   --card-paragraph: #222525;
   --navbar: #078080;
+  --footer: #078080;
   --tertiary: #f8f5f2;
 }
 
@@ -94,7 +95,6 @@ body {
 .top-bar {
   height: 6em;
   height: 5em;
-/*  background-color: $secondary-red; */
   align-items: center;
   background-color: var(--navbar);
 }
@@ -151,6 +151,7 @@ body {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 }
 
 .sticky.small-window{
@@ -256,6 +257,21 @@ body {
 
 /////////// END STAR RATING ///////////////
 
+/////////// FOOTER //////////////////
+.footer{
+  color: white;
+  margin: 200px 0px 0px 0px;
+  background-color: var(--footer);
+  padding: 10px 10px;
+  height: auto;
+  font-family: 'Megrim', cursive;
+}
+
+.other-platform-links {
+  color: #6ad44c;
+}
+
+////////// END FOOTER ///////////////
 @import url(show-page.scss);
 @import url(review-tile.scss);
 @import url(trailNew.scss);
