@@ -44,7 +44,7 @@ const ReviewTile = (props) => {
         <div className="grid-x grid-margin-x">
             <div className="review-data">
               <span>
-                <img className="user-image" src="http://localhost:8080/hikericon.png" alt="user icon"/>
+                <img className="user-image" src="/hikericon.png" alt="user icon"/>
               </span>
               <span className="username-rating">
                 <p className="user-name">{name}</p>
