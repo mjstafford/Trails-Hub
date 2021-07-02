@@ -6,7 +6,6 @@ const NavBar = () => {
   const [windowSize, setWindowSize] = useState(false)
 
   const shrinkSize = () => {
-    console.log(window.scrollY)
     if(window.scrollY >= 100){
       setNavbar(true)
     } else {
@@ -14,7 +13,6 @@ const NavBar = () => {
     }
   }
   const keepOnTop = () => {
-    console.log(window.innerWidth)
     if(window.innerWidth <= 1050){
       setWindowSize(true)
     } else {

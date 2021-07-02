@@ -63,7 +63,7 @@ const NewTrail = () => {
 
   return (
     <>
-      <h1 className="new-trail-header">Tell Us About Your Hike!</h1>
+      <h1 className="new-trail-header">Tell Us About A New Hike!</h1>
       <form onSubmit={submitFormHandler}>
         <ErrorList errors={errors} />
         <div className="new-trail-container">

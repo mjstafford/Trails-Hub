@@ -62,9 +62,10 @@ const ReviewTile = (props) => {
           </div>
         </div>
         <div className="grid-x grid-margin-x">
-          <div className="cell small-12">{reviewImageTiles}</div>
+          <div className="review-images cell small-12">
+            {reviewImageTiles}</div>
         </div>
-        <div >
+        <div className="review-config">
           <a className="delete-review" onClick={deleteHandler}>
             delete
           </a>

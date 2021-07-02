@@ -12,6 +12,7 @@ const FilterForm = props => {
   });
 
   useEffect(() => {
+    clearForm()
     props.searchParams.forEach((value, key) => {
       setFilterFormData({
         ...filterFormData,
@@ -77,7 +78,7 @@ const FilterForm = props => {
         <div>
           <Link to={`/trails?${queryString}`}>
             <button type="button" className="button">
-              <i class="fas fa-search-plus"></i>
+              <img className="search-icon" src="search-icon.png" />
             </button>
           </Link>
           <Link onClick={clearForm} to={`/trails`}>

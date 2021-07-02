@@ -3,13 +3,15 @@
 }
 
 .trail-show {
-  padding: 1em;
+  padding: 0 1em 1em 1em;
+  border-top: 0px;
 }
+
 /*** show banner ***/
 
 .aspect-ratio-box {
   margin-top: 5%;
-  margin-bottom: 5%;
+  margin-bottom: 0;
   height: 7em;
   overflow: hidden;
   padding-top: 591.44px / 1127.34px * 100%;
@@ -43,26 +45,83 @@
 }
 
 .trail-title-show h1 {
-  font-size: 2.5em;
+  display:flex;
+  justify-content: space-between;
+  font-size: 2em;
+  padding-top: .75rem;
+}
+
+.labelKey {
+  font-weight: bold;
 }
 
 .trail-attributes {
+  display: flex;
+  flex-direction: row;
   background-color: #f8f5f2;
-  padding: .75em .75em;
-}
-
-.attribute-line {
-  margin-bottom: 4px;
+  padding: 1em 2em 1em 2em;
 }
 
 .trail-attribute {
   margin-right: 1em;
+  margin-bottom: 5px;
 }
 
-.trail-info-left {
-  padding-left: .75em;
+.divider {
+  border-right: 1px solid lightgray;
+  margin: 0 1.5rem 0 1rem;
 }
 
-.trail-description {
-  padding: .75em .75em;
+.trail-description p {
+  padding: 1.5em .75em .5em .75em;
+}
+
+.trail-config {
+
+  bottom: 0rem;
+}
+
+.trail-config {
+  padding-right: .5rem;
+}
+
+.trail-config img {
+  height: 20px;
+}
+
+.trash-can-icon {
+  filter: invert(76%) sepia(72%) saturate(4099%) hue-rotate(315deg) brightness(80%) contrast(100%);
+  padding-bottom: 1px;
+}
+
+.edit-icon {
+  filter: invert(58%) sepia(19%) saturate(2627%) hue-rotate(194deg) brightness(95%) contrast(95%);
+}
+
+.reviews-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 2rem 2rem 1rem 2rem;
+}
+
+.new-review-button {
+  margin-top: .25rem;
+}
+
+.new-review-button > a {
+  font-size: .8em;
+  background-color: white;
+  color: var(--navbar);
+  border: 2px solid rgba(10, 10, 10, 0.25);
+  border-radius: 10px;
+  font-family: 'JetBrains Mono', monospace;
+  padding: .5em .75em;
+  transition: .3s;
+  margin-left: 1rem;
+}
+
+.new-review-button:hover > a {
+  background-color: #f45d48;
+  color: white;
 }

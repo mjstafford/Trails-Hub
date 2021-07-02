@@ -77,15 +77,15 @@ body {
 }
 
 .Moderate {
-  background-color: gold;
+  background-color: rgb(255, 230, 0);
 }
 
 .Easy {
-  background-color: mediumspringgreen;
+  background-color: lightgreen;
 }
 
 .Hard {
-  background-color: red;
+  background-color: rgba(238, 85, 85, 0.938);
 }
 
 /* end difficulty tags */
@@ -106,12 +106,12 @@ body {
 .logo {
   a { color: white; }
   font-family: 'Megrim', cursive;
-  font-size: 3.5em;
-  font-weight: 800;
+  font-size: 2.75em;
+  font-weight: 400;
   letter-spacing: .01em;
   line-height: .7em;
   margin-left: .5em;
-  margin-top: 15px;
+  margin-top: .5rem;
   transition: .3s;
 }
 
@@ -121,7 +121,7 @@ body {
 
 .add-button > a {
   color: white;
-  border: 3px solid var(--tertiary);
+  border: 2px solid var(--tertiary);
   border-radius: 10px;
   font-family: 'JetBrains Mono', monospace;
   margin-right: 3em;
@@ -140,6 +140,7 @@ body {
 
 .active .logo {
   font-size: 2em;
+  margin-bottom: .5rem;
 }
 
 .active .add-button {
@@ -244,6 +245,7 @@ body {
 .star {
   font-size: 1.6em;
   letter-spacing: -0.125em;
+  line-height: .5em;
   -webkit-text-stroke: 1px dimgray; /* width and color */
 }
 
@@ -256,3 +258,5 @@ body {
 
 @import url(show-page.scss);
 @import url(review-tile.scss);
+@import url(trailNew.scss);
+@import url(trailsIndex.scss);

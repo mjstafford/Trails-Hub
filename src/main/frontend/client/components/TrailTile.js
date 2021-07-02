@@ -18,7 +18,7 @@ const TrailTile = props =>{
         <h4>
           <AverageStarRating reviews={reviews} />
         </h4>
-        <h4>Difficulty: {difficulty}</h4>
+        <h4>Difficulty: <span className={`difficulty-tag ${difficulty}`}>{difficulty}</span></h4>
         <h4>Length: {distance} miles</h4>
         <h4>Location: {zipCode}</h4>
       </div>
