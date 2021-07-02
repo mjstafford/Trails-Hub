@@ -55,12 +55,9 @@ $secondary-red: #f45d48;
   --tertiary: #f8f5f2;
 }
 
-.labelKey {
-  font-weight: bold;
-}
-
 body {
   background-color: var(--main-bg);
+  min-height: 100vh;
 }
 
 .main-content {

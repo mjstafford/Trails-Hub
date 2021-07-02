@@ -112,15 +112,15 @@ const ReviewEditForm = props => {
         <div>
           <label htmlFor="rating">Rating: </label>
           <div className="rating">
-            <input type="radio" id="5" name="rating" value="5" onChange={changeHandler} />
+            <input type="radio" id="5" name="rating" value="5" onChange={changeHandler} checked={formData.rating == 5}/>
             <label htmlFor="5" className="star-input star-label" ></label>
-            <input type="radio" id="4" name="rating" value="4" onChange={changeHandler} />
+            <input type="radio" id="4" name="rating" value="4" onChange={changeHandler} checked={formData.rating == 4}/>
             <label htmlFor="4" className="star-input star-label"></label>
-            <input type="radio" id="3" name="rating" value="3" onChange={changeHandler} />
+            <input type="radio" id="3" name="rating" value="3" onChange={changeHandler} checked={formData.rating == 3}/>
             <label htmlFor="3" className="star-input star-label"></label>
-            <input type="radio" id="2" name="rating" value="2" onChange={changeHandler} />
+            <input type="radio" id="2" name="rating" value="2" onChange={changeHandler} checked={formData.rating == 2}/>
             <label htmlFor="2" className="star-input star-label"></label>
-            <input type="radio" id="1" name="rating" value="1" onChange={changeHandler} />
+            <input type="radio" id="1" name="rating" value="1" onChange={changeHandler} checked={formData.rating == 1}/>
             <label htmlFor="1" className="star-input star-label"></label>
           </div>
         </div>
