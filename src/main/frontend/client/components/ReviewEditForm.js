@@ -109,13 +109,13 @@ const ReviewEditForm = props => {
         <div>
           <div className="rating">
             <input type="radio" id="5" name="rating" value="5" onChange={changeHandler} />
-            <label htmlFor="5" className="star-label" ></label>
+            <label htmlFor="5" className="star-input star-label" ></label>
             <input type="radio" id="4" name="rating" value="4" onChange={changeHandler} />
-            <label htmlFor="4" className="star-label"></label>
+            <label htmlFor="4" className="star-input star-label"></label>
             <input type="radio" id="3" name="rating" value="3" onChange={changeHandler} />
-            <label htmlFor="3" className="star-label"></label>
+            <label htmlFor="3" className="star-input star-label"></label>
             <input type="radio" id="2" name="rating" value="2" onChange={changeHandler} />
-            <label htmlFor="2" className="star-label"></label>
+            <label htmlFor="2" className="star-input star-label"></label>
             <input type="radio" id="1" name="rating" value="1" onChange={changeHandler} />
             <label htmlFor="1" className="star-label"></label>
           </div>

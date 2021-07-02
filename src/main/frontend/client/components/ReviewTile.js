@@ -43,7 +43,6 @@ const ReviewTile = (props) => {
       <div className="callout">
         <div className="grid-x grid-margin-x">
             <div className="review-data">
-
               <span>
                 <img className="user-image" src="http://localhost:8080/hikericon.png" alt="user icon"/>
               </span>

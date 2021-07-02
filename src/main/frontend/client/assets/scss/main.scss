@@ -188,9 +188,6 @@ body {
 
 /////////// STAR RATING ///////////////
 
-.labelKey {
-  font-weight: bold;
-}
 .form{
   display:flex;
   flex-direction:column;
@@ -224,9 +221,11 @@ body {
 .rating > input:checked ~ label {
     color: #ffc700;
 }
+
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
     color: #deb217;
+    transform: scale(1.25);
 }
 .rating > input:checked + label:hover,
 .rating > input:checked + label:hover ~ label,
@@ -239,6 +238,7 @@ body {
 .starRating {
   color: #ffc700;
 }
+
 .missingStars {
   color: #ccc;
 }
@@ -250,10 +250,20 @@ body {
   -webkit-text-stroke: 1px dimgray; /* width and color */
 }
 
+.star-input {
+  -webkit-text-stroke: 1px dimgray; /* width and color */
+  transition: transform .2s;
+}
+
+.star-input:hover {
+  transform: scale(1.25);
+}
+
 .star-rating-span {
   margin-left: .5em;
   margin-right: .5em;
 }
+
 
 /////////// END STAR RATING ///////////////
 
